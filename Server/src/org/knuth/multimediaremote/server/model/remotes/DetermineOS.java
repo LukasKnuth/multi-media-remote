@@ -18,7 +18,7 @@ public class DetermineOS {
     private OperatingSystem determineCurrentOS(){
         if (currentOs != null) return currentOs;
         String os_str = System.getProperty("os.name").toLowerCase();
-        if ("Linux".startsWith(os_str)) this.currentOs = OperatingSystem.LINUX;
+        if ("linux".startsWith(os_str)) this.currentOs = OperatingSystem.LINUX;
         else if ("windows".startsWith(os_str)) this.currentOs = OperatingSystem.WINDOWS;
         else if ("macosx".startsWith(os_str)) this.currentOs = OperatingSystem.MACOSX;
         else {
