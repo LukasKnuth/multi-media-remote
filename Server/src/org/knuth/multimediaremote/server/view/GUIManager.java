@@ -1,5 +1,7 @@
 package org.knuth.multimediaremote.server.view;
 
+import org.knuth.multimediaremote.server.view.elements.OSSwitch;
+
 import javax.swing.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -23,8 +25,23 @@ public enum GUIManager {
         // Basic Layout Container:
         JPanel overall = new JPanel();
         overall.setLayout(new BoxLayout(overall, BoxLayout.Y_AXIS));
-        JButton test = new JButton("Testbutton");
-        overall.add(test);
+        f.add(overall);
+        // Elements:
+        // LOGO
+
+        overall.add(new JSeparator(JSeparator.HORIZONTAL));
+        // INSTRUCTIONS
+
+        // OSSWITCHER
+        OSSwitch osSwitch = new OSSwitch();
+        overall.add(osSwitch.getView());
+        overall.add(new JSeparator(JSeparator.HORIZONTAL));
+        // SETTINGS
+
+        overall.add(new JSeparator(JSeparator.HORIZONTAL));
+        // LOG
+
+        overall.add(new JSeparator(JSeparator.HORIZONTAL));
     }
 
     /**
@@ -36,13 +53,14 @@ public enum GUIManager {
         f = new JFrame("MultiMediaRemote Server Application");
         f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         f.addWindowListener(new WindowAdapter() {
-            public void windowClosed(WindowEvent w){
+            public void windowClosed(WindowEvent w) {
                 System.exit(0);
             }
         });
         f.setResizable(false);
         f.setSize(400, 600);
-        System.out.println(System.getProperty("os.name"));
+        // Set up the All the Controll-Elements:
+        setUp();
     }
 
     /**

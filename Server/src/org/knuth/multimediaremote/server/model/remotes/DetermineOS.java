@@ -2,10 +2,13 @@ package org.knuth.multimediaremote.server.model.remotes;
 
 public class DetermineOS {
 
+    /** Represents an operating system. */
     private enum OperatingSystem{
         LINUX, MACOSX, WINDOWS;
     }
-    private OperatingSystem currentOs;
+
+    /** NOT TO BE USED! Cached result of the OS-Determination */
+    private OperatingSystem current_os;
 
     /**
      * Runs a test to determine which OS is currently running.
@@ -16,15 +19,15 @@ public class DetermineOS {
      * @return The current os as a {@code OperatingSystem-Object}.
      */
     private OperatingSystem determineCurrentOS(){
-        if (currentOs != null) return currentOs;
+        if (current_os != null) return current_os;
         String os_str = System.getProperty("os.name").toLowerCase();
-        if ("linux".startsWith(os_str)) this.currentOs = OperatingSystem.LINUX;
-        else if ("windows".startsWith(os_str)) this.currentOs = OperatingSystem.WINDOWS;
-        else if ("macosx".startsWith(os_str)) this.currentOs = OperatingSystem.MACOSX;
+        if ("linux".startsWith(os_str)) this.current_os = OperatingSystem.LINUX;
+        else if ("windows".startsWith(os_str)) this.current_os = OperatingSystem.WINDOWS;
+        else if ("macosx".startsWith(os_str)) this.current_os = OperatingSystem.MACOSX;
         else {
             throw new IllegalArgumentException("Unknown OS-Type: "+os_str);
         }
-        return this.currentOs;
+        return this.current_os;
     }
 
     /**
@@ -34,7 +37,14 @@ public class DetermineOS {
      */
     public Remote getNativeRemote(){
         // Check which System...
-        return new NativeLinuxRemote(); // E.G.!
+        switch (determineCurrentOS()){
+            case LINUX:
+                return new NativeLinuxRemote();
+            case WINDOWS:
+            case MACOSX:
+            default:
+                throw new IllegalArgumentException("No Native Remote for this OS found!");
+        }
     }
 
 }
