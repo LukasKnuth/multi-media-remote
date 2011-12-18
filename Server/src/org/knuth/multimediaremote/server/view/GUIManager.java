@@ -1,5 +1,7 @@
 package org.knuth.multimediaremote.server.view;
 
+import org.apache.log4j.Logger;
+import org.knuth.multimediaremote.server.view.elements.Log;
 import org.knuth.multimediaremote.server.view.elements.OSSwitch;
 
 import javax.swing.*;
@@ -40,7 +42,8 @@ public enum GUIManager {
 
         overall.add(new JSeparator(JSeparator.HORIZONTAL));
         // LOG
-
+        Log log = new Log();
+        overall.add(log.getView());
         overall.add(new JSeparator(JSeparator.HORIZONTAL));
     }
 
@@ -68,6 +71,9 @@ public enum GUIManager {
      */
     public void present(){
         f.setVisible(true);
+        Logger logger = Logger.getLogger("guiLogger");
+        logger.info("Online!");
+        logger.error("Problem...");
     }
     
 }

@@ -1,5 +1,7 @@
 package org.knuth.multimediaremote.server;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 import org.knuth.multimediaremote.server.view.GUIManager;
 
 import javax.swing.*;
@@ -15,12 +17,18 @@ public class Main {
     private Main(){}
 
     /**
-     * Asynchronously create the GUI.
+     * Initialize the Logger and asynchronously create the GUI.
      * @param agrs Arguments from the Commandline.
      */
     public static void main(String[] agrs){
+        // Create and show the GUI:
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
+                // Initialize the logger:
+                PropertyConfigurator.configure(Main.class.getResource("log/log4j-config.properties"));
+                Logger logger = Logger.getRootLogger();
+                logger.info("Hello World!");
+                // Present GUI:
                 GUIManager.INSTANCE.present();
             }
         });

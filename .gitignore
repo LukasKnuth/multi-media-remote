@@ -1,2 +1,5 @@
 # Ignore Binary files
 out/
+
+# Ignore the sample-logfile
+logging.log
