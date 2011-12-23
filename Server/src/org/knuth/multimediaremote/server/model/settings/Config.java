@@ -21,6 +21,7 @@ public enum Config {
     /** The properties-object maintained by this class */
     private Properties props;
 
+    /** Hosts the GUI-representation of the properties */
     private Configurator gui_rep;
 
     /**
@@ -28,10 +29,13 @@ public enum Config {
      */
     private Config(){
         // TODO Create "Translater"-class with HashMap for all public translations (read only with devensive-copys)
-        // TODO Add Swing-representation of public options
         // TODO ?Make "DetermineOS" package private and provide a "getCurrentOS"-method from here?
     }
 
+    /**
+     * Get a GUI-representation of all properties.
+     * @return the gui-representation.
+     */
     public JPanel getView(){
         if (gui_rep == null)
             gui_rep = new Configurator();

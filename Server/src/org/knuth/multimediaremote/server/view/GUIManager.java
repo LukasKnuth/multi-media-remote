@@ -4,9 +4,9 @@ import org.apache.log4j.Logger;
 import org.knuth.multimediaremote.server.model.remotes.DetermineOS;
 import org.knuth.multimediaremote.server.model.settings.Config;
 import org.knuth.multimediaremote.server.view.elements.Log;
-import org.knuth.multimediaremote.server.view.elements.OSSwitch;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -28,25 +28,33 @@ public enum GUIManager {
     private void setUp(){
         // Basic Layout Container:
         JPanel overall = new JPanel();
-        overall.setLayout(new BoxLayout(overall, BoxLayout.Y_AXIS));
+        overall.setLayout(new BoxLayout(overall, BoxLayout.PAGE_AXIS));
         f.add(overall);
         // Elements:
         // LOGO
 
         overall.add(new JSeparator(JSeparator.HORIZONTAL));
         // INSTRUCTIONS
-
+        String instructions_str = "<html><p>Specify the Port on which the Server should run (if you don't know " +
+                "what that is, you should probably leave it like it is) and hit the \"Start " +
+                "Server\"-button.</p>" +
+                "<p>The Server listens on [your-ip]:[port] for you. You can enter that in your " +
+                "MultiMediaRemote-client software.</p>" +
+                "<p>If you choose to also use the WebEnd, you can access it via your Browser with the " +
+                "above IP and the Port + 1000</p>" +
+                "<p>Have fun!</p></html>";
+        JLabel instructions = new JLabel(instructions_str);
+        instructions.setAlignmentX(Component.CENTER_ALIGNMENT);
+        overall.add(instructions);
         // OSSWITCHER
-        OSSwitch osSwitch = new OSSwitch();
-        overall.add(osSwitch.getView());
+
         overall.add(new JSeparator(JSeparator.HORIZONTAL));
         // SETTINGS
-        overall.add( Config.INSTANCE.getView());
+        JPanel settings = Config.INSTANCE.getView();
+        overall.add(settings);
         overall.add(new JSeparator(JSeparator.HORIZONTAL));
         // LOG
-        Log log = new Log();
-        overall.add(log.getView());
-        overall.add(new JSeparator(JSeparator.HORIZONTAL));
+        overall.add(new Log().getView());
     }
 
     /**
