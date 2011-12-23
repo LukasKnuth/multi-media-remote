@@ -3,3 +3,5 @@ out/
 
 # Ignore the sample-logfile
 logging.log
+# Ignore my config
+config.properties

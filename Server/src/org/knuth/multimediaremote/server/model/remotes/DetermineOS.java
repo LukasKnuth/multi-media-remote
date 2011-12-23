@@ -1,6 +1,8 @@
 package org.knuth.multimediaremote.server.model.remotes;
 
-public class DetermineOS {
+import org.apache.log4j.Logger;
+
+public final class DetermineOS {
 
     /** Represents an operating system. */
     private enum OperatingSystem{
@@ -19,14 +21,20 @@ public class DetermineOS {
      * @return The current os as a {@code OperatingSystem-Object}.
      */
     private OperatingSystem determineCurrentOS(){
+        // Check if already set:
         if (current_os != null) return current_os;
+        // Else, find out:
+        Logger logger = Logger.getLogger("guiLogger");
         String os_str = System.getProperty("os.name").toLowerCase();
         if ("linux".startsWith(os_str)) this.current_os = OperatingSystem.LINUX;
         else if ("windows".startsWith(os_str)) this.current_os = OperatingSystem.WINDOWS;
         else if ("macosx".startsWith(os_str)) this.current_os = OperatingSystem.MACOSX;
         else {
+            logger.error("Couldn't determine the current OS...");
             throw new IllegalArgumentException("Unknown OS-Type: "+os_str);
         }
+        // Log the OS:
+        logger.info("Found OS to be "+current_os);
         return this.current_os;
     }
 

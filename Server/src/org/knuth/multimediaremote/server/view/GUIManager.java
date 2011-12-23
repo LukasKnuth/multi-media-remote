@@ -1,6 +1,8 @@
 package org.knuth.multimediaremote.server.view;
 
 import org.apache.log4j.Logger;
+import org.knuth.multimediaremote.server.model.remotes.DetermineOS;
+import org.knuth.multimediaremote.server.model.settings.Config;
 import org.knuth.multimediaremote.server.view.elements.Log;
 import org.knuth.multimediaremote.server.view.elements.OSSwitch;
 
@@ -39,7 +41,7 @@ public enum GUIManager {
         overall.add(osSwitch.getView());
         overall.add(new JSeparator(JSeparator.HORIZONTAL));
         // SETTINGS
-
+        overall.add( Config.INSTANCE.getView());
         overall.add(new JSeparator(JSeparator.HORIZONTAL));
         // LOG
         Log log = new Log();
@@ -57,6 +59,9 @@ public enum GUIManager {
         f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         f.addWindowListener(new WindowAdapter() {
             public void windowClosed(WindowEvent w) {
+                // Save the config:
+                Config.INSTANCE.close();
+                // Exit:
                 System.exit(0);
             }
         });
@@ -72,8 +77,9 @@ public enum GUIManager {
     public void present(){
         f.setVisible(true);
         Logger logger = Logger.getLogger("guiLogger");
-        logger.info("Online!");
-        logger.error("Problem...");
+        logger.info("Successfully build the GUI");
+        // Check which OS:
+        new DetermineOS().getNativeRemote();
     }
     
 }

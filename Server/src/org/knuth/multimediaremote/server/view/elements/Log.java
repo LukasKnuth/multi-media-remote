@@ -91,7 +91,7 @@ public class Log extends AppenderSkeleton{
     /**
      * Returns the {@code JTextPane} which is used to log
      *  on.
-     * @return
+     * @return The {@code JTextPane}-instance.
      */
     public JTextPane getView(){
         return log;
