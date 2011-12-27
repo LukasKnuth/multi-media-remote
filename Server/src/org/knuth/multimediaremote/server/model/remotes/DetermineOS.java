@@ -18,7 +18,7 @@ public final class DetermineOS {
      *  The result's are cached, so it's okay to run this method
      *  multiple times!
      * @throws IllegalArgumentException if the OS is unknown.
-     * @return The current os as a {@code OperatingSystem-Object}.
+     * @return the current os as a {@code OperatingSystem-Object}.
      */
     private OperatingSystem determineCurrentOS(){
         // Check if already set:

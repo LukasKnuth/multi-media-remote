@@ -1,7 +1,6 @@
 package org.knuth.multimediaremote.server.view;
 
 import org.apache.log4j.Logger;
-import org.knuth.multimediaremote.server.model.remotes.DetermineOS;
 import org.knuth.multimediaremote.server.model.settings.Config;
 import org.knuth.multimediaremote.server.view.elements.Log;
 
@@ -86,8 +85,6 @@ public enum GUIManager {
         f.setVisible(true);
         Logger logger = Logger.getLogger("guiLogger");
         logger.info("Successfully build the GUI");
-        // Check which OS:
-        new DetermineOS().getNativeRemote();
     }
     
 }

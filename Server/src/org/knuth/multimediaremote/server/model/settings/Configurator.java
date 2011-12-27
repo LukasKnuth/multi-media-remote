@@ -1,5 +1,7 @@
 package org.knuth.multimediaremote.server.model.settings;
 
+import org.knuth.multimediaremote.server.protocols.ServerManager;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -69,6 +71,7 @@ class Configurator implements ActionListener, PropertyChangeListener {
         overall.add(webend);
         // Server starter
         starter = new JButton("Start Server");
+        starter.setActionCommand("start");
         starter.addActionListener(this);
         starter.setAlignmentX(Component.CENTER_ALIGNMENT);
         overall.add(starter);
@@ -80,7 +83,17 @@ class Configurator implements ActionListener, PropertyChangeListener {
      */
     public void actionPerformed(ActionEvent e) {
         if (starter == e.getSource()){
-            System.out.println("Starting Server...");
+            if ("start".equals(e.getActionCommand()) ){
+                System.out.println("Starting Server...");
+                ServerManager.INSTANCE.startServers();
+                starter.setActionCommand("stop");
+                starter.setText("Stop Server");
+            } else if ("stop".equals(e.getActionCommand()) ){
+                System.out.println("Stopping Server...");
+                ServerManager.INSTANCE.stopServers();
+                starter.setActionCommand("start");
+                starter.setText("Start Server");
+            }
         } else if (webend == e.getSource()){
             Config.INSTANCE.setProperty("webend", webend.isSelected() + "");
         }

@@ -9,6 +9,7 @@ import javax.swing.*;
 
 /**
  * Server-Application Intro.
+ * @author Lukas Knuth
  */
 public class Main {
 
