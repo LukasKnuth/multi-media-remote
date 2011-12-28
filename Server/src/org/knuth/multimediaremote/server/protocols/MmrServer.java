@@ -6,6 +6,9 @@ import org.knuth.multimediaremote.server.model.settings.Config;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * @author Lukas Knuth
@@ -31,25 +34,34 @@ final class MmrServer implements Server{
      */
     private static final String FAILURE = "FAILED";
 
-    /** Indicates if the server is currently running
-     *  e.g. listening for new actions.
-     */
-    private boolean running; // TODO Very ugly. Does not stop when already waiting for input!
-    
+    /** The socket which this Server uses */
+    private ServerSocket serverSocket;
+
+    /** The task which runs the Server in a background-thread */
+    private ExecutorService server_task;
+
     public void init() {
         String port_str = Config.INSTANCE.getProperty("port");
         port = Integer.parseInt(port_str);
-        running = false;
+        server_task = Executors.newSingleThreadExecutor();
     }
 
     public void start() {
         System.out.println("Starting MMR-Server");
-        new Thread(server).start();
+        server_task.execute(server);
     }
 
     public void stop() {
         System.out.println("Stopping MMR-Server");
-        running = false;
+        server_task.shutdown();
+        // Really shut down the Server and cancel the {@code accept()}-
+        // method.
+        // @see http://stackoverflow.com/questions/2983835
+        try {
+            serverSocket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -57,14 +69,12 @@ final class MmrServer implements Server{
      */
     private Runnable server = new Runnable() {
         public void run() {
-            running = true;
-            ServerSocket serverSocket = null;
             try {
                 serverSocket = new ServerSocket(port);
                 Socket client = null;
                 BufferedReader in = null;
                 BufferedWriter out = null;
-                while (running){
+                while (!server_task.isShutdown()){
                     try {
                         client = serverSocket.accept();
                         // Initialize Streams:
@@ -86,6 +96,10 @@ final class MmrServer implements Server{
                             out.write(FAILURE);
                             out.flush();
                         }
+                    } catch (SocketException e){
+                        // Can be ignored as it will accrue when the Server is stopped.
+                        // @see http://stackoverflow.com/questions/2983835
+                        System.out.println("Thrown...");
                     } finally {
                         // Always close the Streams
                         if (in != null) in.close();
