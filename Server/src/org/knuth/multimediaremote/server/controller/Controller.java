@@ -5,6 +5,8 @@ import org.knuth.multimediaremote.server.model.remotes.Remote;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * @author Lukas Knuth
@@ -24,7 +26,31 @@ public enum Controller {
     public enum Actions{
         PAUSE_PLAY, START, STOP,
         NEXT, PREVIOUS,
-        VOL_UP, VOL_DOWN, MUTE
+        VOL_UP, VOL_DOWN, MUTE;
+
+        /** Not instantiable */
+        private Actions(){
+            poisoned = false;
+        }
+        /** Status of the poison-pill */
+        private boolean poisoned;
+
+        /**
+         * Set the poison-pill to be taken.
+         * @see <a>http://stackoverflow.com/questions/812342</a>
+         */
+        void interrupt(){
+            poisoned = true;
+        }
+
+        /**
+         * Indicates if the poison was taken and the queue
+         *  should stop.
+         * @return if the queue is poisoned.
+         */
+        boolean isInterrupted(){
+            return poisoned;
+        }
     }
 
     /** BlockingQueue to manage the incoming actions */
@@ -32,6 +58,9 @@ public enum Controller {
 
     /** The remote to execute the actions on */
     private Remote remote;
+
+    /** Executor which runs the actions-queue */
+    private ExecutorService queue_service;
 
     /**
      * Executes the first action from the queue
@@ -43,9 +72,12 @@ public enum Controller {
          */
         public void run() {
             System.out.println("Starting to listen for Queue...");
-            while (true){
+            while (!queue_service.isShutdown()){
                 try {
                     Actions action = queue.take();
+                    // Check for poison-pill:
+                    if (action.isInterrupted())
+                        return;
                     // Execute action on Remote.
                     System.out.println("Execute: "+action);
                 } catch (InterruptedException e) {
@@ -64,7 +96,22 @@ public enum Controller {
         // Determine OS and get the correct remote.
         remote = new DetermineOS().getNativeRemote();
         // Start the queue:
-        new Thread(execute_action).start();
+        queue_service = Executors.newSingleThreadExecutor();
+        queue_service.execute(execute_action);
+    }
+
+    /**
+     * <b>MUST</b> be called when the application wants to shut
+     *  down. This will stop the Controllers queue-thread and
+     *  enable the program to fully shut down.
+     */
+    public void shutdown(){
+        // Poison-Pill:
+        Actions pill = Actions.MUTE;
+        pill.interrupt();
+        addAction(pill);
+        // Shutdown gracefully:
+        queue_service.shutdown();
     }
 
     /**

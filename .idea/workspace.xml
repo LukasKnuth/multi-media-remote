@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="53f0f455-f7db-4462-b300-8f2ecdf1c96e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/protocols/MmrServer.java" afterPath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/protocols/MmrServer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/controller/Controller.java" afterPath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/controller/Controller.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/view/GUIManager.java" afterPath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/view/GUIManager.java" />
     </list>
     <ignored path="MultiMediaRemote.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -72,10 +73,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Controller.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="GUIManager.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/view/GUIManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="72" column="47" selection-start="2639" selection-end="2639" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Controller.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/controller/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="66" column="43" selection-start="1874" selection-end="1874" vertical-scroll-proportion="0.0">
+            <state line="76" column="31" selection-start="2051" selection-end="2051" vertical-scroll-proportion="-0.14548802">
               <folding />
             </state>
           </provider>
@@ -84,16 +94,16 @@
       <file leaf-file-name="ServerManager.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/protocols/ServerManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="0" selection-start="767" selection-end="767" vertical-scroll-proportion="0.0">
+            <state line="5" column="48" selection-start="145" selection-end="145" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MmrServer.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="MmrServer.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/protocols/MmrServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="58" column="58" selection-start="1794" selection-end="1794" vertical-scroll-proportion="1.8603773">
+            <state line="89" column="103" selection-start="3066" selection-end="3066" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -104,7 +114,7 @@
       <file leaf-file-name="HttpServer.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/protocols/HttpServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="6" selection-start="204" selection-end="204" vertical-scroll-proportion="0.0">
+            <state line="9" column="24" selection-start="264" selection-end="264" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -138,13 +148,13 @@
         <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/protocols/mmr/MMRServer.java" />
         <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/protocols/mmr/MmrServer.java" />
         <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/protocols/http/HttpServer.java" />
-        <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/protocols/HttpServer.java" />
         <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/Main.java" />
         <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/protocols/ServerManager.java" />
         <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/settings/Configurator.java" />
+        <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/protocols/MmrServer.java" />
         <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/view/GUIManager.java" />
         <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/controller/Controller.java" />
-        <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/protocols/MmrServer.java" />
+        <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/protocols/HttpServer.java" />
       </list>
     </option>
   </component>
@@ -450,11 +460,11 @@
   <component name="RunManager" selected="Application.Main">
     <configuration default="false" name="Main" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="org.knuth.multimediaremote.server.Main" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
@@ -467,44 +477,6 @@
       </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Debug" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="DetermineOSTest" type="JUnit" factoryName="JUnit" temporary="true">
-      <module name="Server" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.DetermineOSTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Testcase" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="Testcase" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="Server" />
-      <envs />
-      <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
@@ -617,11 +589,9 @@
       <option name="CLEAR_LOGCAT" value="false" />
       <method />
     </configuration>
-    <list size="4">
-      <item index="0" class="java.lang.String" itemvalue="Application.Main" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.DetermineOSTest" />
-      <item index="2" class="java.lang.String" itemvalue="Application.Testcase" />
-      <item index="3" class="java.lang.String" itemvalue="Android Application.AndroidClient" />
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="Android Application.AndroidClient" />
+      <item index="1" class="java.lang.String" itemvalue="Application.Main" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -665,7 +635,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39976415" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2676887" sideWeight="0.5016026" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32964602" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900944" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32964602" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
@@ -716,7 +686,7 @@
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented basic server-work. This does not execute any operations on the remote but works so far." />
+    <option name="LAST_COMMIT_MESSAGE" value="Re-implemented the MMR-Server with the Executor Framework. Also, the server now really shuts down immediately." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -734,6 +704,7 @@
     <MESSAGE value="The configuration can now be set from the GUI and is probably saved and restored." />
     <MESSAGE value="Did some work on the GUI-layout." />
     <MESSAGE value="Implemented basic server-work. This does not execute any operations on the remote but works so far." />
+    <MESSAGE value="Re-implemented the MMR-Server with the Executor Framework. Also, the server now really shuts down immediately." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -778,11 +749,6 @@
         <state line="19" column="22" selection-start="542" selection-end="542" vertical-scroll-proportion="0.06934307" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/view/GUIManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="87" column="50" selection-start="2983" selection-end="2983" vertical-scroll-proportion="0.71428573" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/settings/Configurator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="94" column="46" selection-start="3354" selection-end="3354" vertical-scroll-proportion="1.1428572" />
@@ -798,27 +764,40 @@
         <state line="11" column="22" selection-start="323" selection-end="323" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/controller/Controller.java">
+    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/view/GUIManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="43" selection-start="1874" selection-end="1874" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/protocols/HttpServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="6" selection-start="204" selection-end="204" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/protocols/ServerManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="0" selection-start="767" selection-end="767" vertical-scroll-proportion="0.0" />
+        <state line="72" column="47" selection-start="2639" selection-end="2639" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/protocols/MmrServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="58" selection-start="1794" selection-end="1794" vertical-scroll-proportion="1.8603773">
+        <state line="89" column="103" selection-start="3066" selection-end="3066" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/protocols/ServerManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="48" selection-start="145" selection-end="145" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/protocols/HttpServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="24" selection-start="264" selection-end="264" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/controller/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="76" column="31" selection-start="2051" selection-end="2051" vertical-scroll-proportion="-0.14548802">
+          <folding />
         </state>
       </provider>
     </entry>
