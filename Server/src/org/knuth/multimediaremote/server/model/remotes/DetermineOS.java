@@ -2,6 +2,8 @@ package org.knuth.multimediaremote.server.model.remotes;
 
 import org.apache.log4j.Logger;
 
+import java.io.File;
+
 public final class DetermineOS {
 
     /** Represents an operating system. */
@@ -35,6 +37,7 @@ public final class DetermineOS {
         }
         // Log the OS:
         logger.info("Found OS to be "+current_os);
+        // Load the correct
         return this.current_os;
     }
 
@@ -47,7 +50,15 @@ public final class DetermineOS {
         // Check which System...
         switch (determineCurrentOS()){
             case LINUX:
-                return new NativeLinuxRemote();
+                Logger logger = Logger.getLogger("guiLogger");
+                File lib_file = new File("natives/libLinuxRemote.so");
+                if (!lib_file.exists()){
+                    System.out.println(lib_file.getAbsolutePath());
+                    logger.error("Can't find the native library's in the \"natives\"-directory!");
+                    return new NativeRemote(); // TODO Better Error-handling (do this in bootstrap and don't start Server)
+                }
+                System.load(lib_file.getAbsolutePath());
+                return new NativeRemote();
             case WINDOWS:
             case MACOSX:
             default:

@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AndroidClient/AndroidClient.iml" filepath="$PROJECT_DIR$/AndroidClient/AndroidClient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/NativeRemotes/NativeRemotes.iml" filepath="$PROJECT_DIR$/NativeRemotes/NativeRemotes.iml" />
       <module fileurl="file://$PROJECT_DIR$/Server/Server.iml" filepath="$PROJECT_DIR$/Server/Server.iml" />
     </modules>
   </component>

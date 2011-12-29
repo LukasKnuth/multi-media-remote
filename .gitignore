@@ -1,6 +1,9 @@
 # Ignore Binary files
 out/
 
+#Ignore the compiled native-library's
+Server/natives/
+
 # Ignore the sample-logfile
 logging.log
 # Ignore my config

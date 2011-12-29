@@ -24,7 +24,7 @@ public enum Controller {
      *  understand.
      */
     public enum Actions{
-        PAUSE_PLAY, START, STOP,
+        PAUSE_PLAY, STOP,
         NEXT, PREVIOUS,
         VOL_UP, VOL_DOWN, MUTE;
 
@@ -37,7 +37,7 @@ public enum Controller {
 
         /**
          * Set the poison-pill to be taken.
-         * @see <a>http://stackoverflow.com/questions/812342</a>
+         * @see <a href="http://stackoverflow.com/questions/812342">StackOverflow</a>
          */
         void interrupt(){
             poisoned = true;
@@ -79,6 +79,29 @@ public enum Controller {
                     if (action.isInterrupted())
                         return;
                     // Execute action on Remote.
+                    switch (action){    // TODO Looks a little ugly here. Maybe let the Remote do this?
+                        case PAUSE_PLAY:
+                            remote.pausePlay();
+                            break;
+                        case STOP:
+                            remote.stop();
+                            break;
+                        case NEXT:
+                            remote.nextTrack();
+                            break;
+                        case PREVIOUS:
+                            remote.previousTrack();
+                            break;
+                        case VOL_UP:
+                            remote.volUp();
+                            break;
+                        case VOL_DOWN:
+                            remote.volDown();
+                            break;
+                        case MUTE:
+                            remote.mute();
+                            break;
+                    }
                     System.out.println("Execute: "+action);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
