@@ -81,19 +81,19 @@ final class MmrServer implements Server{
                         in = new BufferedReader( new InputStreamReader( client.getInputStream() ));
                         out = new BufferedWriter( new OutputStreamWriter( client.getOutputStream() ));
                         // Read from the Stream:
-                        StringBuilder builder = new StringBuilder();
-                        while (in.ready()){
-                            builder.append(in.readLine());
-                        }
+                        String input = in.readLine();
+                        System.out.println("Got: "+input);
                         // Parse input:
                         try {
-                            Controller.Actions action = Controller.Actions.valueOf(builder.toString());
+                            Controller.Actions action = Controller.Actions.valueOf(input);
                             Controller.INSTANCE.addAction(action);
                             out.write(SUCCESS);
+                            out.newLine();
                             out.flush();
                         } catch (IllegalArgumentException e){
                             // Invalid action:
                             out.write(FAILURE);
+                            out.newLine();
                             out.flush();
                         }
                     } catch (SocketException e){

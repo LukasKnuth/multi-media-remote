@@ -3,7 +3,11 @@
       package="org.knuth.multimediaremote.android"
       android:versionCode="1"
       android:versionName="1.0">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application android:label="@string/app_name" android:icon="@drawable/icon">
+
         <activity android:name="Main"
                   android:label="@string/app_name">
             <intent-filter>
@@ -11,5 +15,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 </manifest> 
