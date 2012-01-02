@@ -43,11 +43,11 @@ final class MmrServer implements Server{
     public void init() {
         String port_str = Config.INSTANCE.getProperty("port");
         port = Integer.parseInt(port_str);
-        server_task = Executors.newSingleThreadExecutor();
     }
 
     public void start() {
         System.out.println("Starting MMR-Server");
+        server_task = Executors.newSingleThreadExecutor();
         server_task.execute(server);
     }
 
