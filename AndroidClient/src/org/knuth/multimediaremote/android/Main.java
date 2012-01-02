@@ -13,10 +13,10 @@ import org.knuth.multimediaremote.android.client.Client;
  */
 public class Main extends Activity{
 
-    // TODO Try the connection in a AsyncTask and store values when okay.
-    // TODO Create new class for the connection and their values
-    // TODO If working, disable EditText and Connect-Button and enable others.
     // TODO Create filter/mask for EditText to enter IP-Address
+    // TODO Add Database to store and retrieve connections
+    // TODO Add failure-messages (etz)
+    // TODO Add a test-signal to the Server so the user can test the connection before saving.
 
     private Client client;
 
