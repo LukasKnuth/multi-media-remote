@@ -3,6 +3,7 @@ package org.knuth.multimediaremote.server.view;
 import org.apache.log4j.Logger;
 import org.knuth.multimediaremote.server.controller.Controller;
 import org.knuth.multimediaremote.server.model.settings.Config;
+import org.knuth.multimediaremote.server.protocols.ServerManager;
 import org.knuth.multimediaremote.server.view.elements.Log;
 
 import javax.swing.*;
@@ -69,6 +70,8 @@ public enum GUIManager {
             public void windowClosed(WindowEvent w) {
                 // Save the config:
                 Config.INSTANCE.close();
+                // Shutdown all Servers:
+                ServerManager.INSTANCE.stopServers();
                 // Shutdown the Controller:
                 Controller.INSTANCE.shutdown();
                 // Exit:

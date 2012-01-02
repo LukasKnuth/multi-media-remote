@@ -20,6 +20,14 @@ interface Server {
 
     /**
      * Stop this Server.
+     * <br>
+     * <b>This method is guarantied to be called</b>. So it might be
+     *  the case, that the Server has not yet started when this
+     *  method is called.
+     *  <br>
+     * It is the implementations task to not throw any uncaught
+     *  exceptions and check for itself if and how the Server can
+     *  be shut down!
      */
     public void stop();
 

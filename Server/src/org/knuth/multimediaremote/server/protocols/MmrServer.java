@@ -53,12 +53,14 @@ final class MmrServer implements Server{
 
     public void stop() {
         System.out.println("Stopping MMR-Server");
-        server_task.shutdown();
         // Really shut down the Server and cancel the {@code accept()}-
         // method.
         // @see http://stackoverflow.com/questions/2983835
         try {
-            serverSocket.close();
+            if (server_task != null)
+                server_task.shutdown();
+            if (serverSocket != null)
+                serverSocket.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

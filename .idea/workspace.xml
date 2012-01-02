@@ -24,14 +24,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="53f0f455-f7db-4462-b300-8f2ecdf1c96e" name="Default" comment="Implemented an address-book for servers (which is not yet used).">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/AndroidClient/libs/android-support-v4.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/AndroidClient/src/org/knuth/multimediaremote/android/addressbook/AddressbookLoader.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/AndroidClient/src/org/knuth/multimediaremote/android/addressbook/DatabaseHelper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/AndroidClient/src/org/knuth/multimediaremote/android/addressbook/SimpleCursorLoader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidClient/AndroidClient.iml" afterPath="$PROJECT_DIR$/AndroidClient/AndroidClient.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidClient/src/org/knuth/multimediaremote/android/Main.java" afterPath="$PROJECT_DIR$/AndroidClient/src/org/knuth/multimediaremote/android/Main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/protocols/MmrServer.java" afterPath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/protocols/MmrServer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/protocols/Server.java" afterPath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/protocols/Server.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/view/GUIManager.java" afterPath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/view/GUIManager.java" />
@@ -752,6 +745,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2676887" sideWeight="0.5016026" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900944" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32964602" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900944" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -763,7 +757,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900944" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32964602" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Android Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -803,7 +796,7 @@
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Controlling does now work from the Android-client application. Also made some improvements to the Server." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented an address-book for servers (which is not yet used)." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -825,6 +818,7 @@
     <MESSAGE value="Re-implemented the Controller to use the Executor Framework and implemented a &quot;Poison-Pill&quot; to shut down the actions-queue when the application shuts down." />
     <MESSAGE value="Implemented the native JNI-binding for Linux-platforms and got everything to work for now." />
     <MESSAGE value="Controlling does now work from the Android-client application. Also made some improvements to the Server." />
+    <MESSAGE value="Implemented an address-book for servers (which is not yet used)." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
