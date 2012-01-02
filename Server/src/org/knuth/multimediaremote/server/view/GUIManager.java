@@ -2,6 +2,7 @@ package org.knuth.multimediaremote.server.view;
 
 import org.apache.log4j.Logger;
 import org.knuth.multimediaremote.server.controller.Controller;
+import org.knuth.multimediaremote.server.model.remotes.OSSwitch;
 import org.knuth.multimediaremote.server.model.settings.Config;
 import org.knuth.multimediaremote.server.protocols.ServerManager;
 import org.knuth.multimediaremote.server.view.elements.Log;
@@ -33,22 +34,25 @@ public enum GUIManager {
         f.add(overall);
         // Elements:
         // LOGO
-
+        ImageIcon logo = new ImageIcon(GUIManager.class.getResource("res/logo_platzhalter.png"));
+        JLabel logo_label = new JLabel(logo);
+        logo_label.setAlignmentX(Component.CENTER_ALIGNMENT);
+        overall.add(logo_label);
         overall.add(new JSeparator(JSeparator.HORIZONTAL));
         // INSTRUCTIONS
-        String instructions_str = "<html><p>Specify the Port on which the Server should run (if you don't know " +
-                "what that is, you should probably leave it like it is) and hit the \"Start " +
-                "Server\"-button.</p>" +
-                "<p>The Server listens on [your-ip]:[port] for you. You can enter that in your " +
-                "MultiMediaRemote-client software.</p>" +
-                "<p>If you choose to also use the WebEnd, you can access it via your Browser with the " +
-                "above IP and the Port + 1000</p>" +
+        String instructions_str = "<html><p><b>Connection-Data <i>for clients</i></b>" +
+                "<ul><li>Server-IP: [IP]</li>" +
+                "<li>Port: [Port]</li>" +
+                "</ul>" +
+                "<b>Connection-Data <i>for browsers</i></b>" +
+                "<ul><li>Address: http://[ip]:[port]</li>" +
+                "</ul>"+
                 "<p>Have fun!</p></html>";
         JLabel instructions = new JLabel(instructions_str);
         instructions.setAlignmentX(Component.CENTER_ALIGNMENT);
         overall.add(instructions);
         // OSSWITCHER
-
+        overall.add(new OSSwitch().getView());
         overall.add(new JSeparator(JSeparator.HORIZONTAL));
         // SETTINGS
         JPanel settings = Config.INSTANCE.getView();

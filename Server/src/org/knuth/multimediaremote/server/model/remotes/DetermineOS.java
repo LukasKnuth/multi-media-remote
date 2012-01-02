@@ -6,8 +6,10 @@ import java.io.File;
 
 public final class DetermineOS {
 
+    // TODO Make this a static utility class?
+
     /** Represents an operating system. */
-    private enum OperatingSystem{
+    enum OperatingSystem{
         LINUX, MACOSX, WINDOWS;
     }
 
@@ -22,7 +24,7 @@ public final class DetermineOS {
      * @throws IllegalArgumentException if the OS is unknown.
      * @return the current os as a {@code OperatingSystem-Object}.
      */
-    private OperatingSystem determineCurrentOS(){
+    OperatingSystem determineCurrentOS(){
         // Check if already set:
         if (current_os != null) return current_os;
         // Else, find out:
@@ -55,7 +57,7 @@ public final class DetermineOS {
                 if (!lib_file.exists()){
                     System.out.println(lib_file.getAbsolutePath());
                     logger.error("Can't find the native library's in the \"natives\"-directory!");
-                    return new NativeRemote(); // TODO Better Error-handling (do this in bootstrap and don't start Server)
+                    throw new RuntimeException("Cant find native library!"); // TODO Better Error-handling (do this in bootstrap and don't start Server)
                 }
                 System.load(lib_file.getAbsolutePath());
                 return new NativeRemote();

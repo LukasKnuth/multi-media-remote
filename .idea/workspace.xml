@@ -23,10 +23,15 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="OnlyLog" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="53f0f455-f7db-4462-b300-8f2ecdf1c96e" name="Default" comment="Implemented an address-book for servers (which is not yet used).">
+    <list default="true" id="53f0f455-f7db-4462-b300-8f2ecdf1c96e" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/view/res/apple_logo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/view/res/linux_logo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/view/res/logo_platzhalter.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/view/res/windows_logo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/remotes/OSSwitch.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/view/elements/OSSwitch.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/protocols/MmrServer.java" afterPath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/protocols/MmrServer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/protocols/Server.java" afterPath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/protocols/Server.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/remotes/DetermineOS.java" afterPath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/remotes/DetermineOS.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/view/GUIManager.java" afterPath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/view/GUIManager.java" />
     </list>
     <ignored path="MultiMediaRemote.iws" />
@@ -88,15 +93,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Main.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AndroidClient/src/org/knuth/multimediaremote/android/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="94" selection-start="610" selection-end="610" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="DatabaseHelper.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AndroidClient/src/org/knuth/multimediaremote/android/addressbook/DatabaseHelper.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -108,22 +104,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AddressbookLoader.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="AddressbookLoader.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AndroidClient/src/org/knuth/multimediaremote/android/addressbook/AddressbookLoader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="46" selection-start="167" selection-end="167" vertical-scroll-proportion="0.12523021">
+            <state line="4" column="46" selection-start="167" selection-end="167" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AndroidClient/res/layout/main.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="112" column="31" selection-start="4232" selection-end="4232" vertical-scroll-proportion="0.0">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -132,6 +119,35 @@
         <entry file="file://$PROJECT_DIR$/AndroidClient/src/org/knuth/multimediaremote/android/client/Client.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="115" column="35" selection-start="3540" selection-end="3540" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GUIManager.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/view/GUIManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="39" column="30" selection-start="1296" selection-end="1296" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OSSwitch.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/remotes/OSSwitch.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="30" column="60" selection-start="792" selection-end="792" vertical-scroll-proportion="-0.1878453">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DetermineOS.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/remotes/DetermineOS.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="26" column="4" selection-start="722" selection-end="722" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -156,14 +172,10 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/NativeRemotes/.gitignore" />
-        <option value="$PROJECT_DIR$/NativeRemotes/Linux/src/remote.cpp" />
         <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/controller/Controller.java" />
-        <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/remotes/DetermineOS.java" />
         <option value="$PROJECT_DIR$/AndroidClient/res/layout/main.xml" />
         <option value="$PROJECT_DIR$/AndroidClient/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/AndroidClient/src/org/knuth/multimediaremote/android/client/Client.java" />
-        <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/view/GUIManager.java" />
         <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/protocols/Server.java" />
         <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/protocols/MmrServer.java" />
         <option value="$PROJECT_DIR$/AndroidClient/src/org/knuth/multimediaremote/android/addressbook/loader/SimpleCursorLoader.java" />
@@ -172,6 +184,10 @@
         <option value="$PROJECT_DIR$/AndroidClient/src/org/knuth/multimediaremote/android/addressbook/SimpleCursorLoader.java" />
         <option value="$PROJECT_DIR$/AndroidClient/src/org/knuth/multimediaremote/android/addressbook/DatabaseHelper.java" />
         <option value="$PROJECT_DIR$/AndroidClient/src/org/knuth/multimediaremote/android/addressbook/AddressbookLoader.java" />
+        <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/view/elements/OSSwitch.java" />
+        <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/view/GUIManager.java" />
+        <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/remotes/DetermineOS.java" />
+        <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/remotes/OSSwitch.java" />
       </list>
     </option>
   </component>
@@ -322,6 +338,32 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elements" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MultiMediaRemote" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="protocols" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -371,6 +413,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="remotes" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -737,12 +783,12 @@
     <frame x="0" y="26" width="1282" height="1000" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32900944" sideWeight="0.49786323" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32900944" sideWeight="0.4943182" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27191558" sideWeight="0.745283" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39976415" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2676887" sideWeight="0.5016026" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900944" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900944" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32964602" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -796,7 +842,7 @@
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented an address-book for servers (which is not yet used)." />
+    <option name="LAST_COMMIT_MESSAGE" value="Improved the Server so all servers get shutdown when the application closes." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -819,6 +865,7 @@
     <MESSAGE value="Implemented the native JNI-binding for Linux-platforms and got everything to work for now." />
     <MESSAGE value="Controlling does now work from the Android-client application. Also made some improvements to the Server." />
     <MESSAGE value="Implemented an address-book for servers (which is not yet used)." />
+    <MESSAGE value="Improved the Server so all servers get shutdown when the application closes." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -828,26 +875,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/AndroidClient/AndroidClient.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidClient/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="66" selection-start="289" selection-end="289" vertical-scroll-proportion="0.16242038" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/controller/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="130" column="16" selection-start="4048" selection-end="4048" vertical-scroll-proportion="0.73114353" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/view/elements/Log.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="13" selection-start="528" selection-end="528" vertical-scroll-proportion="0.20681265" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/settings/Configurator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="6" selection-start="454" selection-end="454" vertical-scroll-proportion="-1.0681266" />
@@ -868,28 +895,6 @@
         <state line="60" column="39" selection-start="1853" selection-end="1853" vertical-scroll-proportion="0.44227642" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/view/GUIManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="53" selection-start="2708" selection-end="2708" vertical-scroll-proportion="0.60509557" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="22" selection-start="323" selection-end="323" vertical-scroll-proportion="0.16242038" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidClient/src/org/knuth/multimediaremote/android/client/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="115" column="35" selection-start="3540" selection-end="3540" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidClient/res/layout/main.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="112" column="31" selection-start="4232" selection-end="4232" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AndroidClient/src/org/knuth/multimediaremote/android/addressbook/SimpleCursorLoader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="0" selection-start="596" selection-end="596" vertical-scroll-proportion="0.0">
@@ -899,10 +904,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidClient/src/org/knuth/multimediaremote/android/Main.java">
+    <entry file="file://$PROJECT_DIR$/AndroidClient/src/org/knuth/multimediaremote/android/addressbook/AddressbookLoader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="94" selection-start="610" selection-end="610" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="4" column="46" selection-start="167" selection-end="167" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -915,9 +922,63 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidClient/src/org/knuth/multimediaremote/android/addressbook/AddressbookLoader.java">
+    <entry file="file://$PROJECT_DIR$/AndroidClient/res/layout/main.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="46" selection-start="167" selection-end="167" vertical-scroll-proportion="0.12523021">
+        <state line="112" column="31" selection-start="4232" selection-end="4232" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidClient/src/org/knuth/multimediaremote/android/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="94" selection-start="610" selection-end="610" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidClient/src/org/knuth/multimediaremote/android/client/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="115" column="35" selection-start="3540" selection-end="3540" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="0" selection-start="1333" selection-end="1333" vertical-scroll-proportion="0.6751592">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/view/GUIManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="30" selection-start="1296" selection-end="1296" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/remotes/Remote.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="17" selection-start="205" selection-end="205" vertical-scroll-proportion="0.028006589">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/remotes/NativeRemote.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="6" selection-start="148" selection-end="148" vertical-scroll-proportion="0.16803955">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/remotes/DetermineOS.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="4" selection-start="722" selection-end="722" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/remotes/OSSwitch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="60" selection-start="792" selection-end="792" vertical-scroll-proportion="-0.1878453">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
