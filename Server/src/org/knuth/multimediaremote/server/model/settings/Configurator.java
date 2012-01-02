@@ -85,7 +85,7 @@ class Configurator implements ActionListener, PropertyChangeListener {
         if (starter == e.getSource()){
             if ("start".equals(e.getActionCommand()) ){
                 System.out.println("Starting Server...");
-                ServerManager.INSTANCE.startServers();
+                ServerManager.INSTANCE.startServers(); // TODO Add error-handling (don't change Button...)
                 starter.setActionCommand("stop");
                 starter.setText("Stop Server");
             } else if ("stop".equals(e.getActionCommand()) ){
