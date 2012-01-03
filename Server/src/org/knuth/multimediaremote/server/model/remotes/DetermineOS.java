@@ -14,19 +14,12 @@ public final class DetermineOS {
     }
 
     /** NOT TO BE USED! Cached result of the OS-Determination */
-    private static final OperatingSystem current_os;
+    private static OperatingSystem current_os;
 
     /** Caches one instance of a NativeRemote which is returned
      * multiple times when the getNativeRemote()-method is invoked.
      */
     private static NativeRemote native_remote_cache;
-
-    /**
-     * Do basic class-setup and determine the current OS.
-     */
-    static {
-        current_os = determineCurrentOS();
-    }
 
     /**
      * Runs a test to determine which OS is currently running.
