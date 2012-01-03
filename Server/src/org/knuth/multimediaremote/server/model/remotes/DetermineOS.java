@@ -1,12 +1,12 @@
 package org.knuth.multimediaremote.server.model.remotes;
 
 import org.apache.log4j.Logger;
+import org.knuth.multimediaremote.server.model.exceptions.LibraryNotFoundException;
+import org.knuth.multimediaremote.server.model.exceptions.UnknownOSException;
 
 import java.io.File;
 
 public final class DetermineOS {
-
-    // TODO Make this a static utility class?
 
     /** Represents an operating system. */
     enum OperatingSystem{
@@ -14,58 +14,81 @@ public final class DetermineOS {
     }
 
     /** NOT TO BE USED! Cached result of the OS-Determination */
-    private OperatingSystem current_os;
+    private static final OperatingSystem current_os;
+
+    /** Caches one instance of a NativeRemote which is returned
+     * multiple times when the getNativeRemote()-method is invoked.
+     */
+    private static NativeRemote native_remote_cache;
+
+    /**
+     * Do basic class-setup and determine the current OS.
+     */
+    static {
+        current_os = determineCurrentOS();
+    }
 
     /**
      * Runs a test to determine which OS is currently running.
      *  <br>
      *  The result's are cached, so it's okay to run this method
      *  multiple times!
-     * @throws IllegalArgumentException if the OS is unknown.
      * @return the current os as a {@code OperatingSystem-Object}.
      */
-    OperatingSystem determineCurrentOS(){
+    static OperatingSystem determineCurrentOS(){
         // Check if already set:
         if (current_os != null) return current_os;
         // Else, find out:
+        final OperatingSystem temp;
         Logger logger = Logger.getLogger("guiLogger");
         String os_str = System.getProperty("os.name").toLowerCase();
-        if ("linux".startsWith(os_str)) this.current_os = OperatingSystem.LINUX;
-        else if ("windows".startsWith(os_str)) this.current_os = OperatingSystem.WINDOWS;
-        else if ("macosx".startsWith(os_str)) this.current_os = OperatingSystem.MACOSX;
+        // Check the OS-String.
+        if ("linux".startsWith(os_str)) temp = OperatingSystem.LINUX;
+        else if ("windows".startsWith(os_str)) temp = OperatingSystem.WINDOWS;
+        else if ("macosx".startsWith(os_str)) temp = OperatingSystem.MACOSX;
         else {
-            logger.error("Couldn't determine the current OS...");
-            throw new IllegalArgumentException("Unknown OS-Type: "+os_str);
+            logger.error("Couldn't determine an OS for: "+os_str);
+            // TODO Prompt user to write email/file bug with log-file
+            throw new UnknownOSException(os_str);
         }
         // Log the OS:
-        logger.info("Found OS to be "+current_os);
-        // Load the correct
-        return this.current_os;
+        logger.info("Found OS to be "+temp);
+        return temp;
     }
 
     /**
-     * Returns a {@code Remote}-implementation for the currently
-     *  running OS.
-     * @return a {@code Remote} for the currently running OS.
+     * Returns a native {@code Remote}-implementation for the
+     *  currently running OS.
+     * @return a native {@code Remote} for the currently running OS.
      */
-    public Remote getNativeRemote(){
-        // Check which System...
+    public static Remote getNativeRemote() {
+        // Check if already initialized and cached:
+        if (native_remote_cache != null) return native_remote_cache;
+        // Otherwise check which System...
+        Logger logger = Logger.getLogger("guiLogger");
         switch (determineCurrentOS()){
             case LINUX:
-                Logger logger = Logger.getLogger("guiLogger");
                 File lib_file = new File("natives/libLinuxRemote.so");
                 if (!lib_file.exists()){
-                    System.out.println(lib_file.getAbsolutePath());
                     logger.error("Can't find the native library's in the \"natives\"-directory!");
-                    throw new RuntimeException("Cant find native library!"); // TODO Better Error-handling (do this in bootstrap and don't start Server)
+                    throw new LibraryNotFoundException(lib_file.getAbsolutePath());
                 }
-                System.load(lib_file.getAbsolutePath());
-                return new NativeRemote();
+                System.load(lib_file.getAbsolutePath()); // TODO What if loading doesn't work??
+                // Cache the Remote:
+                native_remote_cache = new NativeRemote();
+                return native_remote_cache;
             case WINDOWS:
             case MACOSX:
             default:
-                throw new IllegalArgumentException("No Native Remote for this OS found!");
+                // Can't happen, since the determineCurrentOS()-method will throw
+                // a RuntimeException, which will cause to program to halt.
+                throw new RuntimeException("Unknown OS-Type");
         }
     }
+
+    /**
+     * Static Utility Class - Not instantiable.
+     */
+    private DetermineOS(){}
 
 }

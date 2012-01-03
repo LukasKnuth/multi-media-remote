@@ -107,6 +107,7 @@ public enum Controller {
                     e.printStackTrace();
                 }
             }
+            System.out.println("Stopping to listen for Queue...");
         }
     };
 
@@ -117,7 +118,7 @@ public enum Controller {
     private Controller(){
         queue = new ArrayBlockingQueue<Actions>(3);
         // Determine OS and get the correct remote.
-        remote = new DetermineOS().getNativeRemote();
+        remote = DetermineOS.getNativeRemote();
         // Start the queue:
         queue_service = Executors.newSingleThreadExecutor();
         queue_service.execute(execute_action);

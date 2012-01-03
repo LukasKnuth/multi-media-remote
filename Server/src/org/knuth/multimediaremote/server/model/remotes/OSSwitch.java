@@ -45,7 +45,7 @@ public class OSSwitch {
         URL windows_url = OSSwitch.class.getResource("/org/knuth/multimediaremote/server/view/res/windows_logo.png");
         ImageIcon windows = new ImageIcon(windows_url);
         // Grey others:
-        DetermineOS.OperatingSystem os = new DetermineOS().determineCurrentOS();
+        DetermineOS.OperatingSystem os = DetermineOS.determineCurrentOS();
         switch (os){
             case LINUX:
                 // Make Windows and Mac gray:
