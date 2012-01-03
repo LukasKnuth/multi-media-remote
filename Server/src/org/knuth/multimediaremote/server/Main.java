@@ -2,6 +2,9 @@ package org.knuth.multimediaremote.server;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+import org.knuth.multimediaremote.server.model.exceptions.LibraryNotFoundException;
+import org.knuth.multimediaremote.server.model.exceptions.UnknownOSException;
+import org.knuth.multimediaremote.server.model.remotes.DetermineOS;
 import org.knuth.multimediaremote.server.model.settings.Config;
 import org.knuth.multimediaremote.server.view.GUIManager;
 
@@ -28,16 +31,21 @@ public class Main {
             public void run() {
                 // Initialize the logger:
                 PropertyConfigurator.configure(Main.class.getResource("log/log4j-config.properties"));
-                Logger logger = Logger.getLogger("guiLogger");
-                logger.info("Hello World!");
+                Logger logger = Logger.getRootLogger();
+                // Check the current OS and load the correct library:
+                try {
+                    DetermineOS.getNativeRemote();
+                } catch (UnknownOSException e) { // TODO Prompt the user to report the problem.
+                    // Thrown if the OS couldn't be determined:
+                    logger.error("Unknown OS-type", e);
+                    System.exit(1);
+                } catch (LibraryNotFoundException e){
+                    // Thrown when the native library couldn't be found:
+                    logger.error("Couldn't find library", e);
+                    System.exit(1);
+                }
                 // Read and initialize the config:
-                new SwingWorker<Void, Void>(){
-                    @Override
-                    protected Void doInBackground() throws Exception {
-                        Config.INSTANCE.initialize();
-                        return null;
-                    }
-                }.execute();
+                Config.INSTANCE.initialize();
                 // Present GUI:
                 GUIManager.INSTANCE.present();
             }
