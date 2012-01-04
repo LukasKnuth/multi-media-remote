@@ -23,14 +23,10 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="OnlyLog" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="53f0f455-f7db-4462-b300-8f2ecdf1c96e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/exceptions/LibraryNotFoundException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/exceptions/UnknownOSException.java" />
+    <list default="true" id="53f0f455-f7db-4462-b300-8f2ecdf1c96e" name="Default" comment="Added">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/view/elements/ErrorDialog.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/Main.java" afterPath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/controller/Controller.java" afterPath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/controller/Controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/remotes/DetermineOS.java" afterPath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/remotes/DetermineOS.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/remotes/OSSwitch.java" afterPath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/remotes/OSSwitch.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/protocols/ServerManager.java" afterPath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/protocols/ServerManager.java" />
     </list>
     <ignored path="MultiMediaRemote.iws" />
@@ -92,6 +88,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="Main.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="42" column="20" selection-start="1632" selection-end="1632" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ErrorDialog.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/view/elements/ErrorDialog.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="24" column="90" selection-start="972" selection-end="972" vertical-scroll-proportion="0.7527675">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="ServerManager.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/protocols/ServerManager.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -101,28 +115,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="20" selection-start="1385" selection-end="1385" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Controller.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/controller/Controller.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="109" column="40" selection-start="3439" selection-end="3439" vertical-scroll-proportion="0.9797048">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="DetermineOS.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/remotes/DetermineOS.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="5" selection-start="2037" selection-end="2037" vertical-scroll-proportion="0.0">
+            <state line="63" column="49" selection-start="2411" selection-end="2411" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -147,9 +143,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/AndroidClient/src/org/knuth/multimediaremote/android/addressbook/SimpleCursorLoader.java" />
-        <option value="$PROJECT_DIR$/AndroidClient/src/org/knuth/multimediaremote/android/addressbook/DatabaseHelper.java" />
-        <option value="$PROJECT_DIR$/AndroidClient/src/org/knuth/multimediaremote/android/addressbook/AddressbookLoader.java" />
         <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/view/elements/OSSwitch.java" />
         <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/protocols/MmrServer.java" />
         <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/settings/Configurator.java" />
@@ -160,9 +153,12 @@
         <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/exceptions/CantFindNativeLibrary.java" />
         <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/exceptions/LibraryNotFoundException.java" />
         <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/exceptions/UnknownOSException.java" />
-        <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/remotes/DetermineOS.java" />
-        <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/Main.java" />
         <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/controller/Controller.java" />
+        <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/log/log4j-config.properties" />
+        <option value="$PROJECT_DIR$/logging.log" />
+        <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/Main.java" />
+        <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/remotes/DetermineOS.java" />
+        <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/view/elements/ErrorDialog.java" />
       </list>
     </option>
   </component>
@@ -418,6 +414,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="exceptions" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MultiMediaRemote" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="log" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -843,7 +861,7 @@
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Improved the Log-component with a ScrollBar and auto-scroll." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented OS-check and native library loading in a bootstrap." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -871,6 +889,9 @@
     <MESSAGE value="Fixed a thrown &quot;RejectedExecutionException&quot; when the Server was stopped and then restarted." />
     <MESSAGE value="Added a todo to create error-handling code so the button does not give the impression that the server was successfully started when it wasn't." />
     <MESSAGE value="Improved the Log-component with a ScrollBar and auto-scroll." />
+    <MESSAGE value="Made DetermineOS a static utility class." />
+    <MESSAGE value="Removed the static-initializer which caused the program to force-close when the determineCurrentOS()-method threw an Exception." />
+    <MESSAGE value="Implemented OS-check and native library loading in a bootstrap." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -880,21 +901,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/protocols/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="10" selection-start="438" selection-end="438" vertical-scroll-proportion="0.5398089" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/protocols/MmrServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="58" selection-start="1492" selection-end="1492" vertical-scroll-proportion="0.12731768" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/view/elements/Log.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="92" column="13" selection-start="2963" selection-end="2963" vertical-scroll-proportion="0.29683697" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AndroidClient/src/org/knuth/multimediaremote/android/addressbook/DatabaseHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="40" column="54" selection-start="1318" selection-end="1318" vertical-scroll-proportion="0.0" />
@@ -951,27 +957,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/protocols/ServerManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="42" selection-start="934" selection-end="934" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/remotes/DetermineOS.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="5" selection-start="2037" selection-end="2037" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="20" selection-start="1385" selection-end="1385" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/remotes/OSSwitch.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="47" column="53" selection-start="1534" selection-end="1534" vertical-scroll-proportion="0.2195122">
@@ -981,7 +966,49 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/controller/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="109" column="40" selection-start="3439" selection-end="3439" vertical-scroll-proportion="0.9797048">
+        <state line="109" column="40" selection-start="3439" selection-end="3439" vertical-scroll-proportion="0.64756095">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logging.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="84" column="38" selection-start="5834" selection-end="5834" vertical-scroll-proportion="0.8314746">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/log/log4j-config.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="72" selection-start="533" selection-end="533" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="20" selection-start="1632" selection-end="1632" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/remotes/DetermineOS.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="49" selection-start="2411" selection-end="2411" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/protocols/ServerManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="42" selection-start="934" selection-end="934" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/view/elements/ErrorDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="90" selection-start="972" selection-end="972" vertical-scroll-proportion="0.7527675">
           <folding />
         </state>
       </provider>
