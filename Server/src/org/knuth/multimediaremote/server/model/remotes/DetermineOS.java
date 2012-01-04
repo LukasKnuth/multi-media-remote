@@ -46,6 +46,7 @@ public final class DetermineOS {
         }
         // Log the OS:
         logger.info("Found OS to be "+temp);
+        current_os = temp;
         return temp;
     }
 
