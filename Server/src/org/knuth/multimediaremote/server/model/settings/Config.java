@@ -29,7 +29,6 @@ public enum Config {
      */
     private Config(){
         // TODO Create "Translater"-class with HashMap for all public translations (read only with devensive-copys)
-        // TODO ?Make "DetermineOS" package private and provide a "getCurrentOS"-method from here?
     }
 
     /**

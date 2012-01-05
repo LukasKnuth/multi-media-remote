@@ -41,7 +41,6 @@ public final class DetermineOS {
         else if ("macosx".startsWith(os_str)) temp = OperatingSystem.MACOSX;
         else {
             logger.error("Couldn't determine an OS for: "+os_str);
-            // TODO Prompt user to write email/file bug with log-file
             throw new UnknownOSException(os_str);
         }
         // Log the OS:

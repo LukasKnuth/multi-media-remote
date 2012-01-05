@@ -36,7 +36,7 @@ public class Main {
                 // Check the current OS and load the correct library:
                 try {
                     DetermineOS.getNativeRemote();
-                } catch (UnknownOSException e) { // TODO Prompt the user to report the problem.
+                } catch (UnknownOSException e) {
                     // Thrown if the OS couldn't be determined:
                     logger.error("Unknown OS-type", e);
                     new ErrorDialog(e).show();
