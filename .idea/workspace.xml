@@ -24,10 +24,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="53f0f455-f7db-4462-b300-8f2ecdf1c96e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/view/elements/Instructions.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/settings/Configurator.java" afterPath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/settings/Configurator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/view/GUIManager.java" afterPath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/view/GUIManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/server/ServerManager.java" afterPath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/server/ServerManager.java" />
     </list>
     <ignored path="MultiMediaRemote.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -88,11 +86,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ServerManager.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ServerManager.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/server/ServerManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="38" selection-start="1786" selection-end="1786" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="18" column="4" selection-start="552" selection-end="552" vertical-scroll-proportion="0.501845">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -106,10 +106,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Instructions.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Instructions.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/view/elements/Instructions.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="79" selection-start="1431" selection-end="1431" vertical-scroll-proportion="0.21586716">
+            <state line="62" column="9" selection-start="2258" selection-end="2258" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -118,7 +118,7 @@
       <file leaf-file-name="MmrServer.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/server/MmrServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="112" column="44" selection-start="3786" selection-end="3801" vertical-scroll-proportion="0.0">
+            <state line="116" column="51" selection-start="4052" selection-end="4052" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -175,8 +175,8 @@
         <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/server/MmrServer.java" />
         <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/view/GUIManager.java" />
         <option value="$PROJECT_DIR$/config.properties" />
-        <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/server/ServerManager.java" />
         <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/view/elements/Instructions.java" />
+        <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/server/ServerManager.java" />
       </list>
     </option>
   </component>
@@ -891,7 +891,7 @@
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented an Observer-pattern in the ServerManager which allows components to register themselves for updates on the Servers state." />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleaned up the ServerManager code." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -926,6 +926,8 @@
     <MESSAGE value="Fixed bug which caused the DetermineOS-class to not cache the determined OS." />
     <MESSAGE value="Updated TODOs" />
     <MESSAGE value="Implemented an Observer-pattern in the ServerManager which allows components to register themselves for updates on the Servers state." />
+    <MESSAGE value="Updated GUI-components to use the new Observer from the ServerManager." />
+    <MESSAGE value="Cleaned up the ServerManager code." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -980,13 +982,6 @@
         <state line="43" column="59" selection-start="1508" selection-end="1508" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/server/MmrServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="112" column="44" selection-start="3786" selection-end="3801" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/settings/Configurator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="41" column="64" selection-start="1438" selection-end="1438" vertical-scroll-proportion="0.028052805">
@@ -1001,27 +996,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/server/ServerState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="29" selection-start="1020" selection-end="1020" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/server/ServerStateContainer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="38" column="53" selection-start="1052" selection-end="1052" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/server/ServerManager.java">
+    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/server/ServerState.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="38" selection-start="1786" selection-end="1786" vertical-scroll-proportion="0.0">
+        <state line="40" column="29" selection-start="1020" selection-end="1020" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/server/MmrServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="116" column="51" selection-start="4052" selection-end="4052" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/view/elements/Instructions.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="79" selection-start="1431" selection-end="1431" vertical-scroll-proportion="0.21586716">
+        <state line="62" column="9" selection-start="2258" selection-end="2258" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/server/ServerManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="4" selection-start="552" selection-end="552" vertical-scroll-proportion="0.501845">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

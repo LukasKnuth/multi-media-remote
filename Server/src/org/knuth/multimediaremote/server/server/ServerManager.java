@@ -16,8 +16,6 @@ import java.util.*;
  */
 public enum ServerManager {
 
-    // TODO ServerStateChanged observer that notifies the launch-button and instructions when state changes
-
     /** Instance to work with */
     INSTANCE;
 
@@ -59,10 +57,14 @@ public enum ServerManager {
         // Initialize the list for the observer-part:
         listeners = new ArrayList<>(5);
         // Add servers:
-        bootstrap();
+        addDefaultServers();
     }
 
-    private void bootstrap(){
+    /**
+     * Registers the default servers to the ServerManager in order
+     *  to make the basic program work.
+     */
+    private void addDefaultServers(){
         registerServer("mmr", new MmrServer());
         if (Boolean.valueOf(Config.INSTANCE.getProperty("webend"))){
             registerServer("http", new HttpServer());
@@ -74,6 +76,7 @@ public enum ServerManager {
      *  in the local network so the client can easily connect.
      * @return the IPv4 address of this machine in the local network or
      *  a message informing the user that there was a problem.
+     * @see <a href="http://stackoverflow.com/questions/8765578">StackOverflow</a>
      */
     private String getLocalIP(){
         try {
