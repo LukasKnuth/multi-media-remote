@@ -4,7 +4,8 @@ import org.apache.log4j.Logger;
 import org.knuth.multimediaremote.server.controller.Controller;
 import org.knuth.multimediaremote.server.model.remotes.OSSwitch;
 import org.knuth.multimediaremote.server.model.settings.Config;
-import org.knuth.multimediaremote.server.protocols.ServerManager;
+import org.knuth.multimediaremote.server.server.ServerManager;
+import org.knuth.multimediaremote.server.view.elements.Instructions;
 import org.knuth.multimediaremote.server.view.elements.Log;
 
 import javax.swing.*;
@@ -40,15 +41,7 @@ public enum GUIManager {
         overall.add(logo_label);
         overall.add(new JSeparator(JSeparator.HORIZONTAL));
         // INSTRUCTIONS
-        String instructions_str = "<html><p><b>Connection-Data <i>for clients</i></b>" +
-                "<ul><li>Server-IP: [IP]</li>" +
-                "<li>Port: [Port]</li>" +
-                "</ul>" +
-                "<b>Connection-Data <i>for browsers</i></b>" +
-                "<ul><li>Address: http://[ip]:[port]</li>" +
-                "</ul>"+
-                "<p>Have fun!</p></html>";
-        JLabel instructions = new JLabel(instructions_str);
+        JLabel instructions = new Instructions().getLabel();
         instructions.setAlignmentX(Component.CENTER_ALIGNMENT);
         overall.add(instructions);
         // OSSWITCHER

@@ -1,6 +1,10 @@
 package org.knuth.multimediaremote.server.model.settings;
 
-import org.knuth.multimediaremote.server.protocols.ServerManager;
+import org.apache.log4j.Logger;
+import org.knuth.multimediaremote.server.server.ServerManager;
+import org.knuth.multimediaremote.server.server.ServerState;
+import org.knuth.multimediaremote.server.server.ServerStateContainer;
+import org.knuth.multimediaremote.server.server.observer.ServerStateChangeListener;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,7 +19,7 @@ import java.text.NumberFormat;
  * @version 1.0
  * The GUI-representation of the configuration.
  */
-class Configurator implements ActionListener, PropertyChangeListener {
+class Configurator implements ActionListener, PropertyChangeListener, ServerStateChangeListener {
 
     /** The JPanel to hold all the GUI-Elements */
     private JPanel overall;
@@ -34,6 +38,8 @@ class Configurator implements ActionListener, PropertyChangeListener {
     public Configurator(){
         // Create and set up the GUI-Representation
         setUp();
+        // Register ServerStateChangeListener:
+        ServerManager.INSTANCE.addServerStateChangeListener(this);
     }
 
     /**
@@ -85,17 +91,33 @@ class Configurator implements ActionListener, PropertyChangeListener {
         if (starter == e.getSource()){
             if ("start".equals(e.getActionCommand()) ){
                 System.out.println("Starting Server...");
-                ServerManager.INSTANCE.startServers(); // TODO Add error-handling (don't change Button...) (with Observer from ServerManager)
-                starter.setActionCommand("stop");
-                starter.setText("Stop Server");
+                ServerManager.INSTANCE.startServers();
             } else if ("stop".equals(e.getActionCommand()) ){
                 System.out.println("Stopping Server...");
                 ServerManager.INSTANCE.stopServers();
-                starter.setActionCommand("start");
-                starter.setText("Start Server");
             }
         } else if (webend == e.getSource()){
             Config.INSTANCE.setProperty("webend", webend.isSelected() + "");
+        }
+    }
+
+    @Override
+    public void serverStateChanged(ServerStateContainer container) {
+        Logger logger = Logger.getLogger("guiLogger");
+        if (container.containsStateFor("mmr")){
+            ServerState state = container.getStateFor("mmr");
+            switch (state.getCurrentState()){
+                case RUNNING:
+                    starter.setActionCommand("stop");
+                    starter.setText("Stop Server");
+                    logger.info("Server successfully started.");
+                    break;
+                case STOPPED:
+                    starter.setActionCommand("start");
+                    starter.setText("Start Server");
+                    logger.info("Server stopped.");
+                    break;
+            }
         }
     }
 
@@ -108,4 +130,5 @@ class Configurator implements ActionListener, PropertyChangeListener {
             Config.INSTANCE.setProperty("port", evt.getNewValue().toString());
         }
     }
+
 }
