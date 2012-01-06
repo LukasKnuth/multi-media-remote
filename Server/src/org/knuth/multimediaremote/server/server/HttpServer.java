@@ -1,4 +1,4 @@
-package org.knuth.multimediaremote.server.protocols;
+package org.knuth.multimediaremote.server.server;
 
 /**
  * @author Lukas Knuth
@@ -7,12 +7,20 @@ package org.knuth.multimediaremote.server.protocols;
  *  over a normal browser (if enabled).
  */
 final class HttpServer implements Server{
+    @Override
     public void init() {
     }
 
+    @Override
     public void start() {
     }
 
+    @Override
     public void stop() {
+    }
+
+    @Override
+    public ServerState getServerState() {
+        return null;
     }
 }

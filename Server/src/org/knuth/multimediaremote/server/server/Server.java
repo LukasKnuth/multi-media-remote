@@ -1,4 +1,4 @@
-package org.knuth.multimediaremote.server.protocols;
+package org.knuth.multimediaremote.server.server;
 
 /**
  * @author Lukas Knuth
@@ -30,5 +30,12 @@ interface Server {
      *  be shut down!
      */
     public void stop();
+
+    /**
+     * Returns a {@code ServerState}-object which holds information
+     *  about the current state and data of this Server-implementation.
+     * @return the {@code ServerState}-object with the current state.
+     */
+    ServerState getServerState();
 
 }

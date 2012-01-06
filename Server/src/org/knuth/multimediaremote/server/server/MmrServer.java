@@ -1,4 +1,4 @@
-package org.knuth.multimediaremote.server.protocols;
+package org.knuth.multimediaremote.server.server;
 
 import org.knuth.multimediaremote.server.controller.Controller;
 import org.knuth.multimediaremote.server.model.settings.Config;
@@ -40,19 +40,20 @@ final class MmrServer implements Server{
     /** The task which runs the Server in a background-thread */
     private ExecutorService server_task;
 
+    @Override
     public void init() {
         String port_str = Config.INSTANCE.getProperty("port");
         port = Integer.parseInt(port_str);
     }
 
+    @Override
     public void start() {
-        System.out.println("Starting MMR-Server");
         server_task = Executors.newSingleThreadExecutor();
         server_task.execute(server);
     }
 
+    @Override
     public void stop() {
-        System.out.println("Stopping MMR-Server");
         // Really shut down the Server and cancel the {@code accept()}-
         // method.
         // @see http://stackoverflow.com/questions/2983835
@@ -64,6 +65,18 @@ final class MmrServer implements Server{
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public ServerState getServerState() {
+        ServerState.States state;
+        if (server_task != null && !server_task.isShutdown()){
+            state = ServerState.States.RUNNING;
+        } else {
+            state = ServerState.States.STOPPED;
+        }
+        // create the state:
+        return new ServerState(state, port);
     }
 
     /**
@@ -84,7 +97,6 @@ final class MmrServer implements Server{
                         out = new BufferedWriter( new OutputStreamWriter( client.getOutputStream() ));
                         // Read from the Stream:
                         String input = in.readLine();
-                        System.out.println("Got: "+input);
                         // Parse input:
                         try {
                             Controller.Actions action = Controller.Actions.valueOf(input);
@@ -101,7 +113,6 @@ final class MmrServer implements Server{
                     } catch (SocketException e){
                         // Can be ignored as it will accrue when the Server is stopped.
                         // @see http://stackoverflow.com/questions/2983835
-                        System.out.println("Thrown...");
                     } finally {
                         // Always close the Streams
                         if (in != null) in.close();

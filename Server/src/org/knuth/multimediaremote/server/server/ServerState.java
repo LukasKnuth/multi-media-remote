@@ -1,0 +1,52 @@
+package org.knuth.multimediaremote.server.server;
+
+/**
+ * @author Lukas Knuth
+ * @version 1.0
+ * A collection of information about the current Server-
+ *  state.
+ */
+public final class ServerState {
+
+    /**
+     * Possible states for the Server. This is not specific
+     *  for any single implementation, but for all registered
+     *  servers.
+     */
+    public enum States{
+        RUNNING,
+        STOPPED
+    }
+
+    /** The current state the Server(s) is in. */
+    private States current_state;
+
+    /** The port the server listens to */
+    private int port;
+
+    /**
+     * Create a new object which holds information about the
+     *  current state and data of a Server-implementation.
+     * @param current_state the servers
+     */
+    ServerState(States current_state, int port){
+        this.current_state = current_state;
+        this.port = port;
+    }
+
+    /**
+     * Get the current state the server-implementation is in.
+     * @return the servers current state.
+     */
+    public States getCurrentState() {
+        return current_state;
+    }
+
+    /**
+     * Get the port the server is listening to.
+     * @return the port.
+     */
+    public int getPort() {
+        return port;
+    }
+}
