@@ -42,12 +42,22 @@ final class MmrServer implements Server{
 
     @Override
     public void init() {
+        loadPort();
+    }
+
+    /**
+     * Load the port from the configuration and store it
+     *  in a field.
+     */
+    private void loadPort(){
         String port_str = Config.INSTANCE.getProperty("port");
         port = Integer.parseInt(port_str);
     }
 
     @Override
     public void start() {
+        // Get the port again, maybe it changed:
+        loadPort();
         server_task = Executors.newSingleThreadExecutor();
         server_task.execute(server);
     }
