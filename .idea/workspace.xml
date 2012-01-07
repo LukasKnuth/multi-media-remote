@@ -28,11 +28,10 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="53f0f455-f7db-4462-b300-8f2ecdf1c96e" name="Default" comment="Cleaned up the ServerManager code.">
+    <list default="true" id="53f0f455-f7db-4462-b300-8f2ecdf1c96e" name="Default" comment="Added">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/Server.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/src/META-INF/MANIFEST.MF" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/Main.java" afterPath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/remotes/DetermineOS.java" afterPath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/remotes/DetermineOS.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/settings/Config.java" afterPath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/settings/Config.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/server/HttpServer.java" afterPath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/server/HttpServer.java" />
     </list>
     <ignored path="MultiMediaRemote.iws" />
@@ -99,10 +98,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="HttpServer.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="HttpServer.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/server/HttpServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="0" selection-start="939" selection-end="939" vertical-scroll-proportion="0.0">
+            <state line="41" column="0" selection-start="939" selection-end="939" vertical-scroll-proportion="1.2859778">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -114,33 +113,6 @@
         <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/server/MmrServer.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="116" column="51" selection-start="4052" selection-end="4052" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DetermineOS.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/remotes/DetermineOS.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="65" column="54" selection-start="2475" selection-end="2475" vertical-scroll-proportion="0.3099631">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Config.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/settings/Config.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="144" column="50" selection-start="4513" selection-end="4513" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Main.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="68" column="74" selection-start="2557" selection-end="2557" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -686,9 +658,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="26" width="1280" height="998" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3286052" sideWeight="0.4943182" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3286052" sideWeight="0.4943182" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2495935" sideWeight="0.6713948" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3995272" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -747,7 +719,7 @@
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cleaned up the ServerManager code." />
+    <option name="LAST_COMMIT_MESSAGE" value="The program now loads and writes it's config/log/native files in the same directory then the &quot;.jar&quot;-file which it's started from." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -784,6 +756,7 @@
     <MESSAGE value="Implemented an Observer-pattern in the ServerManager which allows components to register themselves for updates on the Servers state." />
     <MESSAGE value="Updated GUI-components to use the new Observer from the ServerManager." />
     <MESSAGE value="Cleaned up the ServerManager code." />
+    <MESSAGE value="The program now loads and writes it's config/log/native files in the same directory then the &quot;.jar&quot;-file which it's started from." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -837,13 +810,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/server/MmrServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="116" column="51" selection-start="4052" selection-end="4052" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/log/log4j-config.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="38" selection-start="207" selection-end="218" vertical-scroll-proportion="0.0">
@@ -858,15 +824,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/server/HttpServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="0" selection-start="939" selection-end="939" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/view/elements/Instructions.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="66" column="0" selection-start="2388" selection-end="2388" vertical-scroll-proportion="0.8213716">
@@ -876,15 +833,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="74" selection-start="2557" selection-end="2557" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="67" column="74" selection-start="2536" selection-end="2536" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/remotes/DetermineOS.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="54" selection-start="2475" selection-end="2475" vertical-scroll-proportion="0.3099631">
+        <state line="58" column="46" selection-start="2147" selection-end="2147" vertical-scroll-proportion="0.21586716">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/server/MmrServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="116" column="51" selection-start="4052" selection-end="4052" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/server/HttpServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="0" selection-start="939" selection-end="939" vertical-scroll-proportion="1.2859778">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
