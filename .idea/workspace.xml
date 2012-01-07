@@ -22,10 +22,18 @@
   <component name="AndroidLogFilters">
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="OnlyLog" />
   </component>
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Server" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="53f0f455-f7db-4462-b300-8f2ecdf1c96e" name="Default" comment="">
+    <list default="true" id="53f0f455-f7db-4462-b300-8f2ecdf1c96e" name="Default" comment="Cleaned up the ServerManager code.">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/server/ServerManager.java" afterPath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/server/ServerManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/Main.java" afterPath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/Main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/remotes/DetermineOS.java" afterPath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/remotes/DetermineOS.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/settings/Config.java" afterPath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/settings/Config.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/server/HttpServer.java" afterPath="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/server/HttpServer.java" />
     </list>
     <ignored path="MultiMediaRemote.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,6 +47,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="Commander">
+    <leftPanel />
+    <rightPanel />
+    <splitter proportion="0.5" />
+  </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
@@ -86,31 +99,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ServerManager.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/server/ServerManager.java">
+      <file leaf-file-name="HttpServer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/server/HttpServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="4" selection-start="552" selection-end="552" vertical-scroll-proportion="0.501845">
+            <state line="41" column="0" selection-start="939" selection-end="939" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GUIManager.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/view/GUIManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="59" selection-start="1508" selection-end="1508" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Instructions.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/view/elements/Instructions.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="62" column="9" selection-start="2258" selection-end="2258" vertical-scroll-proportion="0.0">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -124,19 +119,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ServerState.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/server/ServerState.java">
+      <file leaf-file-name="DetermineOS.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/remotes/DetermineOS.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="29" selection-start="1020" selection-end="1020" vertical-scroll-proportion="0.0">
+            <state line="65" column="54" selection-start="2475" selection-end="2475" vertical-scroll-proportion="0.3099631">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ServerStateContainer.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/server/ServerStateContainer.java">
+      <file leaf-file-name="Config.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/settings/Config.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="53" selection-start="1052" selection-end="1052" vertical-scroll-proportion="0.0">
+            <state line="144" column="50" selection-start="4513" selection-end="4513" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Main.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="68" column="74" selection-start="2557" selection-end="2557" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -161,11 +165,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/settings/Config.java" />
-        <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/protocols/ServerManager.java" />
-        <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/protocols/observer/ServerState.java" />
-        <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/protocols/Server.java" />
-        <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/protocols/HttpServer.java" />
         <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/protocols/MmrServer.java" />
         <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/server/observer/ServerStateContainer.java" />
         <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/server/observer/ServerStateChangeListener.java" />
@@ -177,8 +176,16 @@
         <option value="$PROJECT_DIR$/config.properties" />
         <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/view/elements/Instructions.java" />
         <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/server/ServerManager.java" />
+        <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/server/HttpServer.java" />
+        <option value="$PROJECT_DIR$/Server/build.xml" />
+        <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/settings/Config.java" />
+        <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/Main.java" />
+        <option value="$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/remotes/DetermineOS.java" />
       </list>
     </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState />
   </component>
   <component name="MavenRunner">
     <option name="jreName" value="1.6" />
@@ -251,7 +258,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -285,102 +292,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MultiMediaRemote" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="view" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MultiMediaRemote" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="view" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="elements" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MultiMediaRemote" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MultiMediaRemote" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="observer" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -457,10 +368,6 @@
               <option name="myItemId" value="model" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="exceptions" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -512,96 +419,45 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="AndroidClient" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MultiMediaRemote" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AndroidClient" />
+              <option name="myItemId" value="Server" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MultiMediaRemote" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AndroidClient" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MultiMediaRemote" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AndroidClient" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="addressbook" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="GenerateAntBuildDialog.generateIdeaHomeProperty" value="false" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
-    <property name="OverrideImplement.combined" value="true" />
     <property name="project.structure.proportion" value="0.15" />
+    <property name="OverrideImplement.combined" value="true" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="ChangesBrowser.SHOW_FLATTEN" value="true" />
-    <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="project.propVCSSupport.Background" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="GenerateAntBuildDialog.generateSingleFile" value="true" />
+    <property name="GenerateAntBuildDialog.inclineRuntiemClasspath" value="false" />
+    <property name="GenerateAntBuildDialog.outputFileNameProperty" value="build" />
+    <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="options.lastSelected" value="preferences.keymap" />
+    <property name="ChangesBrowser.SHOW_FLATTEN" value="true" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
+    <property name="GenerateAntBuildDialog.backupFiles" value="false" />
+    <property name="options.searchVisible" value="true" />
     <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
@@ -830,11 +686,11 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="26" width="1280" height="998" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3286052" sideWeight="0.4943182" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3286052" sideWeight="0.4943182" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2495935" sideWeight="0.6713948" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3995272" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286052" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -842,7 +698,7 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286052" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286052" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15284553" sideWeight="0.6713948" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22813238" sideWeight="0.4946581" order="2" side_tool="false" content_ui="tabs" />
@@ -937,63 +793,14 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/view/elements/ErrorDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="53" selection-start="1099" selection-end="1099" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/remotes/DetermineOS.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="66" selection-start="1631" selection-end="1631" vertical-scroll-proportion="0.3321033" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/server/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="33" selection-start="1041" selection-end="1041" vertical-scroll-proportion="0.80851066" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/server/observer/ServerStateChangeListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="32" selection-start="597" selection-end="597" vertical-scroll-proportion="0.35243902" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="48" selection-start="1397" selection-end="1397" vertical-scroll-proportion="0.2950558" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/settings/Config.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="115" selection-start="772" selection-end="772" vertical-scroll-proportion="-3.2838914" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/server/HttpServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="13" selection-start="250" selection-end="250" vertical-scroll-proportion="0.25247526" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="12" selection-start="111" selection-end="111" vertical-scroll-proportion="0.08415841" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/view/GUIManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="59" selection-start="1508" selection-end="1508" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/settings/Configurator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="64" selection-start="1438" selection-end="1438" vertical-scroll-proportion="0.028052805">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/controller/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="66" selection-start="1004" selection-end="1044" vertical-scroll-proportion="0.33663365">
-          <folding />
-        </state>
+        <state line="41" column="64" selection-start="1438" selection-end="1438" vertical-scroll-proportion="0.028052805" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/server/ServerStateContainer.java">
@@ -1003,7 +810,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/server/ServerState.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="29" selection-start="1020" selection-end="1020" vertical-scroll-proportion="0.0" />
+        <state line="40" column="29" selection-start="1020" selection-end="1020" vertical-scroll-proportion="0.8292683" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/view/GUIManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="59" selection-start="1508" selection-end="1508" vertical-scroll-proportion="0.66341466" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/server/ServerManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="31" selection-start="1163" selection-end="1163" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/controller/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="87" column="34" selection-start="2599" selection-end="2599" vertical-scroll-proportion="0.37639552">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/server/MmrServer.java">
@@ -1013,19 +844,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/view/elements/Instructions.java">
+    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/log/log4j-config.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="9" selection-start="2258" selection-end="2258" vertical-scroll-proportion="0.0">
+        <state line="6" column="38" selection-start="207" selection-end="218" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/server/ServerManager.java">
+    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/settings/Config.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="4" selection-start="552" selection-end="552" vertical-scroll-proportion="0.501845">
+        <state line="144" column="50" selection-start="4513" selection-end="4513" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/server/HttpServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="0" selection-start="939" selection-end="939" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/view/elements/Instructions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="66" column="0" selection-start="2388" selection-end="2388" vertical-scroll-proportion="0.8213716">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="68" column="74" selection-start="2557" selection-end="2557" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/org/knuth/multimediaremote/server/model/remotes/DetermineOS.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="65" column="54" selection-start="2475" selection-end="2475" vertical-scroll-proportion="0.3099631">
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1035,10 +894,12 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
+          <last-edited>Server</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>

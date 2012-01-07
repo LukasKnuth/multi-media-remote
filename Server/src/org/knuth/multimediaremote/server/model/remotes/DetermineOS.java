@@ -3,6 +3,7 @@ package org.knuth.multimediaremote.server.model.remotes;
 import org.apache.log4j.Logger;
 import org.knuth.multimediaremote.server.model.exceptions.LibraryNotFoundException;
 import org.knuth.multimediaremote.server.model.exceptions.UnknownOSException;
+import org.knuth.multimediaremote.server.model.settings.Config;
 
 import java.io.File;
 
@@ -59,9 +60,10 @@ public final class DetermineOS {
         if (native_remote_cache != null) return native_remote_cache;
         // Otherwise check which System...
         Logger logger = Logger.getLogger("guiLogger");
+        // Check which OS and load it's library:
         switch (determineCurrentOS()){
             case LINUX:
-                File lib_file = new File("natives/libLinuxRemote.so");
+                File lib_file = new File(Config.getBaseDir(), "natives/libLinuxRemote.so");
                 if (!lib_file.exists()){
                     logger.error("Can't find the native library's in the \"natives\"-directory!");
                     throw new LibraryNotFoundException(lib_file.getAbsolutePath());

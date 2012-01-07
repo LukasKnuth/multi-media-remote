@@ -10,6 +10,9 @@ import org.knuth.multimediaremote.server.view.GUIManager;
 import org.knuth.multimediaremote.server.view.elements.ErrorDialog;
 
 import javax.swing.*;
+import java.io.File;
+import java.io.IOException;
+import java.util.Properties;
 
 /**
  * Server-Application Intro.
@@ -31,7 +34,7 @@ public class Main {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 // Initialize the logger:
-                PropertyConfigurator.configure(Main.class.getResource("log/log4j-config.properties"));
+                configureLogger();
                 Logger logger = Logger.getRootLogger();
                 // Check the current OS and load the correct library:
                 try {
@@ -54,5 +57,22 @@ public class Main {
             }
         });
     }
+
+    private static void configureLogger(){
+        try {
+            Properties properties = new Properties();
+            // Load standard config:
+            properties.load(Main.class.getResourceAsStream("log/log4j-config.properties"));
+            // Change dynamic path for Log-file:
+            properties.setProperty("log4j.appender.file.File",
+                    Config.getBaseDir().getAbsolutePath()+ File.separator +"logging.log");
+            // Initialize the config for the logger.
+            PropertyConfigurator.configure(properties);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
 }
