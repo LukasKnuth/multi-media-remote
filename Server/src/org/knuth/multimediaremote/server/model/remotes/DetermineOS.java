@@ -17,6 +17,14 @@ public final class DetermineOS {
     /** NOT TO BE USED! Cached result of the OS-Determination */
     private static OperatingSystem current_os;
 
+    /** Used to determine whether the system is 32 or 64 bit */
+    private enum SystemArch{
+        x86, x86_64
+    }
+
+    /** The currently running Arch */
+    private static SystemArch current_arch;
+
     /** Caches one instance of a NativeRemote which is returned
      * multiple times when the getNativeRemote()-method is invoked.
      */
@@ -35,7 +43,7 @@ public final class DetermineOS {
         // Else, find out:
         final OperatingSystem temp;
         Logger logger = Logger.getLogger("guiLogger");
-        String os_str = System.getProperty("os.name").toLowerCase();
+        final String os_str = System.getProperty("os.name").toLowerCase();
         // Check the OS-String.
         if ("linux".startsWith(os_str)) temp = OperatingSystem.LINUX;
         else if ("windows".startsWith(os_str)) temp = OperatingSystem.WINDOWS;
@@ -44,9 +52,23 @@ public final class DetermineOS {
             logger.error("Couldn't determine an OS for: "+os_str);
             throw new UnknownOSException(os_str);
         }
+        // Check the Arch:
+        // @see http://stackoverflow.com/questions/807263
+        // TODO Use real check from link above and move this to another private method.
+        final SystemArch arch;
+        final String arch_str = System.getProperty("os.arch").toLowerCase();
+        if ("i386".equals(arch_str)) arch = SystemArch.x86; // 32 Bit
+        else if ("amd64".startsWith(arch_str) || "x86_64".startsWith(arch_str))
+            arch = SystemArch.x86_64; // 64 Bit
+        else {
+            logger.error("Unsupported system architecture: "+arch_str);
+            // TODO Throw UnknownOSException or make new one?
+            throw new RuntimeException("Unknown Arch");
+        }
         // Log the OS:
-        logger.info("Found OS to be "+temp);
+        logger.info("Found OS to be "+temp+" - "+arch);
         current_os = temp;
+        current_arch = arch;
         return temp;
     }
 
@@ -63,12 +85,32 @@ public final class DetermineOS {
         // Check which OS and load it's library:
         switch (determineCurrentOS()){
             case LINUX:
-                File lib_file = new File(Config.getBaseDir(), "natives/libLinuxRemote.so");
+                // Check the Arch:
+                final File lib_file;
+                switch (current_arch){
+                    case x86: // 32 Bit
+                        lib_file = new File(Config.getBaseDir(), "natives/libLinuxRemote_x86.so");
+                        break;
+                    case x86_64: // 64 Bit
+                        lib_file = new File(Config.getBaseDir(), "natives/libLinuxRemote_x86_64.so");
+                        break;
+                    default:
+                        // Can't happen...
+                        // TODO Do better job here...
+                        lib_file = Config.getBaseDir();
+                }
+                // Load the library:
                 if (!lib_file.exists()){
                     logger.error("Can't find the native library's in the \"natives\"-directory!");
                     throw new LibraryNotFoundException(lib_file.getAbsolutePath());
                 }
-                System.load(lib_file.getAbsolutePath()); // TODO What if loading doesn't work??
+                try {
+                    System.load(lib_file.getAbsolutePath());
+                } catch (UnsatisfiedLinkError e){
+                    // Couldn't load the Library.
+                    // TODO Do proper error-handling and prompt user
+                    logger.error("Couldn't load the native library", e);
+                }
                 // Cache the Remote:
                 native_remote_cache = new NativeRemote();
                 return native_remote_cache;
