@@ -79,7 +79,7 @@ public enum Controller {
                     if (action.isInterrupted())
                         return;
                     // Execute action on Remote.
-                    switch (action){    // TODO Looks a little ugly here. Maybe let the Remote do this?
+                    switch (action){
                         case PAUSE_PLAY:
                             remote.pausePlay();
                             break;

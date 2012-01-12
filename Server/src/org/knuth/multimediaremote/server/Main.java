@@ -20,6 +20,11 @@ import java.util.Properties;
  */
 public class Main {
 
+    // TODO Use "chkUpdate" for update check on public github repo
+    // TODO Implement the HTTP-Server (or use Jetty embedded?)
+    // TODO Add support for multiple languages
+    // TODO Add more Logging-statements (for errors and events).
+
     /**
      * Not instantiable.
      */
