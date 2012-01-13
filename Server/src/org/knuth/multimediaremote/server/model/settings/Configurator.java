@@ -97,6 +97,7 @@ class Configurator implements ActionListener, PropertyChangeListener, ServerStat
                 ServerManager.INSTANCE.stopServers();
             }
         } else if (webend == e.getSource()){
+            // TODO Register HTTP-Server to the ServerManager
             Config.INSTANCE.setProperty("webend", webend.isSelected() + "");
         }
     }
