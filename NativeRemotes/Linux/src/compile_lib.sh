@@ -1,1 +1,0 @@
-g++ -o ../bin/libLinuxRemote.so -shared -Wl,-soname,libLinuxRemote.so -I/opt/java/include -I/opt/java/include/linux -lX11 -lXtst remote.cpp -lc -fPIC
