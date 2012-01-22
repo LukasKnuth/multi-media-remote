@@ -19,7 +19,7 @@ import java.util.concurrent.Executors;
  *  which is used by client-software for the Multi-
  *  Media-Remote.
  */
-final class MmrServer implements Server{
+final class MmrServer implements AbstractServer {
     
     /** The port this Server listens on */
     private int port;

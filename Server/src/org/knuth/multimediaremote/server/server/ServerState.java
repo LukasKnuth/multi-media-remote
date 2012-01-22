@@ -3,13 +3,13 @@ package org.knuth.multimediaremote.server.server;
 /**
  * @author Lukas Knuth
  * @version 1.0
- * A collection of information about the current Server-
+ * A collection of information about the current AbstractServer-
  *  state.
  */
 public final class ServerState {
 
     /**
-     * Possible states for the Server. This is not specific
+     * Possible states for the AbstractServer. This is not specific
      *  for any single implementation, but for all registered
      *  servers.
      */
@@ -18,7 +18,7 @@ public final class ServerState {
         STOPPED
     }
 
-    /** The current state the Server(s) is in. */
+    /** The current state the AbstractServer(s) is in. */
     private States current_state;
 
     /** The port the server listens to */
@@ -26,7 +26,7 @@ public final class ServerState {
 
     /**
      * Create a new object which holds information about the
-     *  current state and data of a Server-implementation.
+     *  current state and data of a AbstractServer-implementation.
      * @param current_state the servers
      */
     ServerState(States current_state, int port){

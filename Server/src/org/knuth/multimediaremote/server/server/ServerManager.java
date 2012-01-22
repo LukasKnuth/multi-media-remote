@@ -28,7 +28,7 @@ public enum ServerManager {
     private String server_address;
 
     /** All available Servers are registered here */
-    private Map<String, Server> servers;
+    private Map<String, AbstractServer> servers;
 
     /** Indicates if the servers-map is locked (due to
      * the fact that the Servers currently run).
@@ -120,7 +120,7 @@ public enum ServerManager {
         if (listeners.size() <= 0) return;
         // Collect all information:
         final Map<String, ServerState> states = new HashMap<>(DEFAULT_INITIAL_CAPABILITY);
-        for (Map.Entry<String,Server> entry : servers.entrySet()){
+        for (Map.Entry<String,AbstractServer> entry : servers.entrySet()){
             states.put(entry.getKey(), entry.getValue().getServerState());
         }
         // Create the container:
@@ -153,7 +153,7 @@ public enum ServerManager {
     }
 
     /**
-     * Remove the Server with the given key-name from
+     * Remove the AbstractServer with the given key-name from
      *  the Servers this class manages.
      * Servers are not guaranteed to be removed immediately
      *  after this method was called. If the servers are
@@ -165,11 +165,11 @@ public enum ServerManager {
     public void removeServer(String key){
         if (servers_locked){
             // Servers are currently running, add to batch:
-            System.out.println("Adding Server to batch: "+key);
+            System.out.println("Adding AbstractServer to batch: "+key);
             remove_later.add(key);
         } else {
             // Servers are not running, remove immediately:
-            System.out.println("Popping off Server: "+key);
+            System.out.println("Popping off AbstractServer: "+key);
             servers.remove(key);
         }
     }
@@ -178,11 +178,11 @@ public enum ServerManager {
      * Register a server to the ServerManager. All
      *  registered servers will be started and stopped
      *  when the ServerManager tells them to.
-     * @param key the key-name for the Server.
-     * @param server the new Server to register.
+     * @param key the key-name for the AbstractServer.
+     * @param server the new AbstractServer to register.
      */
-    public void registerServer(String key, Server server){
-        System.out.println("Registering Server: "+key);
+    public void registerServer(String key, AbstractServer server){
+        System.out.println("Registering AbstractServer: "+key);
         // Initialize:
         server.init();
         servers.put(key, server);
@@ -190,7 +190,7 @@ public enum ServerManager {
 
     /**
      * Processes all batched Servers which should be removed
-     *  while the Server was running and finally remove them.
+     *  while the AbstractServer was running and finally remove them.
      */
     private void processRemoveBatch(){
         if (remove_later.size() <= 0) return;
@@ -211,7 +211,7 @@ public enum ServerManager {
         // Lock the Servers:
         servers_locked = true;
         // Start all registered Servers:
-        for (Server server : servers.values()){
+        for (AbstractServer server : servers.values()){
             server.start();
         }
         // Notify all listeners:
@@ -223,7 +223,7 @@ public enum ServerManager {
      */
     public void stopServers(){
         // Stop al registered Servers:
-        for (Server server : servers.values()){
+        for (AbstractServer server : servers.values()){
             server.stop();
         }
         // Remove all batched Servers:
