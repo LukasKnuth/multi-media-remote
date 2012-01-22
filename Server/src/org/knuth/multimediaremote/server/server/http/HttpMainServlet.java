@@ -1,5 +1,7 @@
 package org.knuth.multimediaremote.server.server.http;
 
+import org.knuth.multimediaremote.server.controller.Controller;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -72,8 +74,31 @@ public class HttpMainServlet extends HttpServlet{
         System.out.println("POST for action: "+req.getParameter("action"));
         resp.setContentType("application/json");
         try (PrintWriter out = new PrintWriter(resp.getWriter())){
-            out.write("{\"status\": \"success\"}");
+            if (parseAndExecute( req.getParameter("action") )){
+                out.write("{\"status\": \"success\"}");
+            } else {
+                out.write("{\"status\": \"invalid command\"}");
+            }
             out.flush();
+        }
+    }
+
+    /**
+     * Tries to parse the given command (from the AJAX-request) and adds it to
+     *  the queue for execution.
+     * @param command the command passed by the AJAX-request.
+     * @return {@code true} if the command was successfully parsed and added for
+     *  execution, {@code false} otherwise.
+     */
+    private boolean parseAndExecute(String command){
+        try {
+            // Try to parse and execute:
+            Controller.Actions action = Controller.Actions.valueOf(command);
+            Controller.INSTANCE.addAction(action);
+            return true;
+        } catch (IllegalArgumentException e){
+            // Invalid command (couldn't parse):
+            return false;
         }
     }
 }

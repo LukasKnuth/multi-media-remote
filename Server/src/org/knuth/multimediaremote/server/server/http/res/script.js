@@ -11,11 +11,26 @@ $(document).ready(function(){
     // Stop
     $("#stop").click(function(){
         sendAjaxPost("STOP");
-    })
-
-    $("html").ajaxError(function(event, request, settings){
-        console.log(request);
-        console.log(settings);
+    });
+    // Next
+    $("#next").click(function(){
+        sendAjaxPost("NEXT");
+    });
+    // Previous
+    $("#previous").click(function(){
+        sendAjaxPost("PREVIOUS");
+    });
+    // Louder
+    $("#vol_up").click(function(){
+        sendAjaxPost("VOL_UP");
+    });
+    // Volume lower
+    $("#vol_down").click(function(){
+        sendAjaxPost("VOL_DOWN");
+    });
+    // Mute
+    $("#mute").click(function(){
+        sendAjaxPost("MUTE");
     });
 });
 
@@ -26,7 +41,7 @@ $(document).ready(function(){
 *  as a String (same as for the MMR-protocol)
 */
 function sendAjaxPost(action_str){
-    $.post("/", {action : action_str}, function(data){alert(data.status);}, "json")
+    $.post("/", {action : action_str}, "json")
         .success(function(){ajaxPostSuccess();})
         .error(function(){ajaxPostError();});
 }
