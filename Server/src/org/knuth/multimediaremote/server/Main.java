@@ -24,6 +24,7 @@ public class Main {
     // TODO Implement the HTTP-Server (or use Jetty embedded?)
     // TODO Add support for multiple languages
     // TODO Add more Logging-statements (for errors and events).
+    // TODO Change exit-code if there was a problem (don't exit with 0).
 
     /**
      * Not instantiable.
