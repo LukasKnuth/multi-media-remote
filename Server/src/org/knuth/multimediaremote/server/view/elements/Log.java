@@ -95,11 +95,12 @@ public class Log extends AppenderSkeleton{
                 ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
                 ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         // Enable auto-scroll:
-        // TODO Allow manual scroll up.
         scrollPane.getVerticalScrollBar().addAdjustmentListener(new AdjustmentListener() {
             @Override
             public void adjustmentValueChanged(AdjustmentEvent e) {
-                e.getAdjustable().setValue(e.getAdjustable().getMaximum());
+                // Check if user manually scrolled the list:
+                if (e.getAdjustmentType() != AdjustmentEvent.TRACK)
+                    e.getAdjustable().setValue(e.getAdjustable().getMaximum());
             }
         });
         // No border:
