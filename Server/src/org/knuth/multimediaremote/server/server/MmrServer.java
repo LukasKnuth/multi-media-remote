@@ -19,7 +19,13 @@ import java.util.concurrent.Executors;
  *  which is used by client-software for the Multi-
  *  Media-Remote.
  */
-final class MmrServer implements AbstractServer {
+public final class MmrServer implements AbstractServer {
+
+    /**
+     * Package-private constructor to only have {@code ServerManager}
+     *  have an instance..
+     */
+    MmrServer(){}
     
     /** The port this Server listens on */
     private int port;
@@ -114,7 +120,7 @@ final class MmrServer implements AbstractServer {
                             out.write(SUCCESS);
                             out.newLine();
                             out.flush();
-                        } catch (IllegalArgumentException e){
+                        } catch (IllegalArgumentException | NullPointerException e){
                             // Invalid action:
                             out.write(FAILURE);
                             out.newLine();

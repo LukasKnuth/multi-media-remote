@@ -18,7 +18,13 @@ import org.knuth.multimediaremote.server.server.http.HttpMainServlet;
  * A AbstractServer which works over HTTP and enables the usage
  *  over a normal browser (if enabled).
  */
-final class HttpServer implements AbstractServer{
+public final class HttpServer implements AbstractServer{
+
+    /**
+     * Package-private constructor to only have {@code ServerManager}
+     *  have an instance..
+     */
+    HttpServer(){}
 
     /** The port this server-implementation listens on */
     private int port;

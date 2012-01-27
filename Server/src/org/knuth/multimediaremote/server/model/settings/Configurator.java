@@ -1,9 +1,7 @@
 package org.knuth.multimediaremote.server.model.settings;
 
 import org.apache.log4j.Logger;
-import org.knuth.multimediaremote.server.server.ServerManager;
-import org.knuth.multimediaremote.server.server.ServerState;
-import org.knuth.multimediaremote.server.server.ServerStateContainer;
+import org.knuth.multimediaremote.server.server.*;
 import org.knuth.multimediaremote.server.server.observer.ServerStateChangeListener;
 
 import javax.swing.*;
@@ -97,26 +95,34 @@ class Configurator implements ActionListener, PropertyChangeListener, ServerStat
                 ServerManager.INSTANCE.stopServers();
             }
         } else if (webend == e.getSource()){
-            // TODO Register HTTP-Server to the ServerManager
             Config.INSTANCE.setProperty("webend", webend.isSelected() + "");
+            // Register or Remove server from the ServerManager:
+            if (webend.isSelected())
+                ServerManager.INSTANCE.registerServer(HttpServer.class);
+            else if (!webend.isSelected())
+                ServerManager.INSTANCE.removeServer(HttpServer.class);
         }
     }
 
     @Override
     public void serverStateChanged(ServerStateContainer container) {
         Logger logger = Logger.getLogger("guiLogger");
-        if (container.containsStateFor("mmr")){
-            ServerState state = container.getStateFor("mmr");
+        if (container.containsStateFor(MmrServer.class)){
+            ServerState state = container.getStateFor(MmrServer.class);
             switch (state.getCurrentState()){
                 case RUNNING:
                     starter.setActionCommand("stop");
                     starter.setText("Stop Server");
                     logger.info("Server successfully started.");
+                    // Deactivate the Webend Checkbox
+                    webend.setEnabled(false);
                     break;
                 case STOPPED:
                     starter.setActionCommand("start");
                     starter.setText("Start Server");
                     logger.info("Server stopped.");
+                    // Activate the Webend Checkbox
+                    webend.setEnabled(true);
                     break;
             }
         }
@@ -125,6 +131,7 @@ class Configurator implements ActionListener, PropertyChangeListener, ServerStat
     /**
      * Called when the Port was changed.
      */
+    @Override
     public void propertyChange(PropertyChangeEvent evt) {
         if (evt.getSource() == port_field){
             // Set the new Value:

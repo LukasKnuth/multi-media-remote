@@ -28,18 +28,12 @@ public enum ServerManager {
     private String server_address;
 
     /** All available Servers are registered here */
-    private Map<String, AbstractServer> servers;
+    private Map<Class, AbstractServer> servers;
 
     /** Indicates if the servers-map is locked (due to
      * the fact that the Servers currently run).
      */
     private boolean servers_locked;
-
-    /** The servers which where unregistered while they where
-     *  running. This list will be processed as soon as they
-     *  stop.
-     */
-    private List<String> remove_later;
 
     /** All registered listeners to this Observer */
     private List<ServerStateChangeListener> listeners;
@@ -50,7 +44,6 @@ public enum ServerManager {
      */
     private ServerManager(){
         servers = new HashMap<>(DEFAULT_INITIAL_CAPABILITY);
-        remove_later = new ArrayList<>(DEFAULT_INITIAL_CAPABILITY);
         servers_locked = false;
         // Get the IP-Address:
         server_address = getLocalIP();
@@ -65,9 +58,9 @@ public enum ServerManager {
      *  to make the basic program work.
      */
     private void addDefaultServers(){
-        registerServer("mmr", new MmrServer());
+        registerServer(MmrServer.class);
         if (Boolean.valueOf(Config.INSTANCE.getProperty("webend"))){
-            registerServer("http", new HttpServer());
+            registerServer(HttpServer.class);
         }
     }
 
@@ -119,8 +112,8 @@ public enum ServerManager {
     private void notifyAllListeners(){
         if (listeners.size() <= 0) return;
         // Collect all information:
-        final Map<String, ServerState> states = new HashMap<>(DEFAULT_INITIAL_CAPABILITY);
-        for (Map.Entry<String,AbstractServer> entry : servers.entrySet()){
+        final Map<Class, ServerState> states = new HashMap<>(DEFAULT_INITIAL_CAPABILITY);
+        for (Map.Entry<Class,AbstractServer> entry : servers.entrySet()){
             states.put(entry.getKey(), entry.getValue().getServerState());
         }
         // Create the container:
@@ -153,54 +146,61 @@ public enum ServerManager {
     }
 
     /**
-     * Remove the AbstractServer with the given key-name from
+     * Remove the {@code AbstractServer} with the given class from
      *  the Servers this class manages.
-     * Servers are not guaranteed to be removed immediately
-     *  after this method was called. If the servers are
-     *  running when this method is called, they are batched
-     *  and removed after the Servers shut down.
-     * @param key the key-name of the server which should be
+     * If the server is currently running, nothing will happen.
+     * @param server_class the {@code Class} of the server which should be
      *  unregistered.
      */
-    public void removeServer(String key){
-        if (servers_locked){
-            // Servers are currently running, add to batch:
-            System.out.println("Adding AbstractServer to batch: "+key);
-            remove_later.add(key);
-        } else {
+    public void removeServer(Class server_class){
+        if (!servers_locked){
             // Servers are not running, remove immediately:
-            System.out.println("Popping off AbstractServer: "+key);
-            servers.remove(key);
+            System.out.println("Popping off AbstractServer: "+server_class);
+            servers.remove(server_class);
         }
     }
 
     /**
      * Register a server to the ServerManager. All
      *  registered servers will be started and stopped
-     *  when the ServerManager tells them to.
-     * @param key the key-name for the AbstractServer.
-     * @param server the new AbstractServer to register.
+     *  when the ServerManager tells them to.</p>
+     * If the given Server is already registered, this method will
+     *  terminate gracefully and do nothing.
+     * @param server_class the {@code Class} of the AbstractServer.
      */
-    public void registerServer(String key, AbstractServer server){
-        System.out.println("Registering AbstractServer: "+key);
-        // Initialize:
-        server.init();
-        servers.put(key, server);
+    public void registerServer(Class server_class){
+        // Check if already registered:
+        if (servers.containsKey(server_class)) return;
+        // Otherwise, regiser:
+        System.out.println("Registering AbstractServer: "+server_class);
+        try {
+            AbstractServer new_server = loadServerInstance(server_class);
+            // Initialize:
+            new_server.init();
+            servers.put(server_class, new_server);
+        } catch (ClassCastException e){
+            Logger.getLogger("guiLogger").error("Can't register Server", e);
+        }
     }
 
     /**
-     * Processes all batched Servers which should be removed
-     *  while the AbstractServer was running and finally remove them.
+     * Try to create an instance of the given class.</p>
+     *  This method will succeed if the given class implements the
+     *  {@code AbstractServer}-interface.
+     * @param server_class the class to create an instenace from.
+     * @return the created instance of {@code AbstractServer}
+     * @throws ClassCastException if the given class does not implement
+     *  the {@code AbstractServer}-interface.
      */
-    private void processRemoveBatch(){
-        if (remove_later.size() <= 0) return;
-        // Remove all batched Servers:
-        for (String server_key : remove_later){
-            System.out.println("Removing server from Batch: "+server_key);
-            servers.remove(server_key);
-        }
-        // Clear the Batch:
-        remove_later.clear();
+    private AbstractServer loadServerInstance(Class server_class)
+            throws ClassCastException{
+        // TODO Later do this with reflection?
+        // Check if AbstractServer
+        if (server_class == HttpServer.class)
+            return new HttpServer();
+        if (server_class == MmrServer.class)
+            return new MmrServer();
+        else throw new ClassCastException("Can't cast "+server_class+" to "+AbstractServer.class);
     }
 
     /**
@@ -226,8 +226,6 @@ public enum ServerManager {
         for (AbstractServer server : servers.values()){
             server.stop();
         }
-        // Remove all batched Servers:
-        processRemoveBatch();
         // Unlock the Servers:
         servers_locked = false;
         // Notify all listeners:

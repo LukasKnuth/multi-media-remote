@@ -1,8 +1,6 @@
 package org.knuth.multimediaremote.server.view.elements;
 
-import org.knuth.multimediaremote.server.server.ServerManager;
-import org.knuth.multimediaremote.server.server.ServerState;
-import org.knuth.multimediaremote.server.server.ServerStateContainer;
+import org.knuth.multimediaremote.server.server.*;
 import org.knuth.multimediaremote.server.server.observer.ServerStateChangeListener;
 
 import javax.swing.*;
@@ -47,8 +45,8 @@ public class Instructions implements ServerStateChangeListener{
         String mmr_port = "";
         String http = "";
         // Get the information:
-        if (container.containsStateFor("mmr")){
-            ServerState state = container.getStateFor("mmr");
+        if (container.containsStateFor(MmrServer.class)){
+            ServerState state = container.getStateFor(MmrServer.class);
             switch (state.getCurrentState()){
                 case RUNNING:
                     mmr_port = state.getPort()+"";
@@ -62,8 +60,8 @@ public class Instructions implements ServerStateChangeListener{
             ip = "<b>deactivated</b>";
         }
         // HTTP:
-        if (container.containsStateFor("http")){
-            ServerState state = container.getStateFor("http");
+        if (container.containsStateFor(HttpServer.class)){
+            ServerState state = container.getStateFor(HttpServer.class);
             switch (state.getCurrentState()){
                 case RUNNING:
                     http = "http://"+ip+":"+state.getPort()+"";
