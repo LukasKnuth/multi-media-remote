@@ -1,10 +1,12 @@
 package org.knuth.multimediaremote.server.server;
 
+import org.eclipse.jetty.server.Connector;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.ContextHandler;
 import org.eclipse.jetty.server.handler.HandlerCollection;
 import org.eclipse.jetty.server.handler.HandlerList;
 import org.eclipse.jetty.server.handler.ResourceHandler;
+import org.eclipse.jetty.server.nio.SelectChannelConnector;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.knuth.multimediaremote.server.model.settings.Config;
@@ -20,15 +22,22 @@ final class HttpServer implements AbstractServer{
 
     /** The port this server-implementation listens on */
     private int port;
-    
+
+    /** The Jetty-server instance */
     private Server server;
+
+    /** The connector the Jetty-server instance uses */
+    private SelectChannelConnector connector;
 
     @Override
     public void init() {
         // Load the port:
         loadPort();
         // Configure the Server:
-        server = new Server(port);
+        server = new Server();
+        connector = new SelectChannelConnector();
+        connector.setPort(port);
+        server.setConnectors(new Connector[]{connector});
         // TODO Remove jettys logging-statements?
         // Servlet Handler:
         ServletContextHandler servlet_handler = new ServletContextHandler();
@@ -64,7 +73,8 @@ final class HttpServer implements AbstractServer{
     @Override
     public void start() {
         try {
-            // TODO Add port check and launch server on defined port.
+            loadPort();
+            connector.setPort(port);
             server.start();
         } catch (Exception e) {
             e.printStackTrace();
