@@ -45,9 +45,9 @@ public final class DetermineOS {
         Logger logger = Logger.getLogger("guiLogger");
         final String os_str = System.getProperty("os.name").toLowerCase();
         // Check the OS-String.
-        if ("linux".startsWith(os_str)) temp = OperatingSystem.LINUX;
-        else if ("windows".startsWith(os_str)) temp = OperatingSystem.WINDOWS;
-        else if ("macosx".startsWith(os_str)) temp = OperatingSystem.MACOSX;
+        if (os_str.startsWith("linux")) temp = OperatingSystem.LINUX;
+        else if (os_str.startsWith("windows")) temp = OperatingSystem.WINDOWS;
+        else if (os_str.startsWith("macosx")) temp = OperatingSystem.MACOSX;
         else {
             logger.error("Couldn't determine an OS for: "+os_str);
             throw new UnknownOSException(os_str);
@@ -57,7 +57,7 @@ public final class DetermineOS {
         // TODO Use real check from link above and move this to another private method.
         final SystemArch arch;
         final String arch_str = System.getProperty("os.arch").toLowerCase();
-        if ("i386".equals(arch_str)) arch = SystemArch.x86; // 32 Bit
+        if ("i386".equals(arch_str) || "x86".equals(arch_str)) arch = SystemArch.x86; // 32 Bit
         else if ("amd64".startsWith(arch_str) || "x86_64".startsWith(arch_str))
             arch = SystemArch.x86_64; // 64 Bit
         else {
@@ -83,10 +83,10 @@ public final class DetermineOS {
         // Otherwise check which System...
         Logger logger = Logger.getLogger("guiLogger");
         // Check which OS and load it's library:
+        final File lib_file;
         switch (determineCurrentOS()){
             case LINUX:
                 // Check the Arch:
-                final File lib_file;
                 switch (current_arch){
                     case x86: // 32 Bit
                         lib_file = new File(Config.getBaseDir(), "natives/libLinuxRemote_x86.so");
@@ -96,31 +96,40 @@ public final class DetermineOS {
                         break;
                     default:
                         // Can't happen...
-                        // TODO Do better job here...
+                        // TODO Do better job here. Maybe always load 32 Bit if unsure (works?)
                         lib_file = Config.getBaseDir();
                 }
-                // Load the library:
-                if (!lib_file.exists()){
-                    logger.error("Can't find the native library's in the \"natives\"-directory!");
-                    throw new LibraryNotFoundException(lib_file.getAbsolutePath());
-                }
-                try {
-                    System.load(lib_file.getAbsolutePath());
-                } catch (UnsatisfiedLinkError e){
-                    // Couldn't load the Library.
-                    // TODO Do proper error-handling and prompt user
-                    logger.error("Couldn't load the native library", e);
-                }
-                // Cache the Remote:
-                native_remote_cache = new NativeRemote();
-                return native_remote_cache;
+                break;
             case WINDOWS:
+                switch (current_arch){
+                    case x86:
+                        lib_file = new File(Config.getBaseDir(), "natives/WindowsRemote_x86.dll");
+                        break;
+                    default:
+                        lib_file = Config.getBaseDir();
+                }
+                break;
             case MACOSX:
             default:
                 // Can't happen, since the determineCurrentOS()-method will throw
                 // a RuntimeException, which will cause to program to halt.
                 throw new RuntimeException("Unknown OS-Type");
         }
+        // Load the library:
+        if (lib_file == null || !lib_file.exists()){
+            logger.error("Can't find the native library's in the \"natives\"-directory!");
+            throw new LibraryNotFoundException(lib_file.getAbsolutePath());
+        }
+        try {
+            System.load(lib_file.getAbsolutePath());
+        } catch (UnsatisfiedLinkError e){
+            // Couldn't load the Library.
+            // TODO Do proper error-handling and prompt user
+            logger.error("Couldn't load the native library", e);
+        }
+        // Cache the Remote:
+        native_remote_cache = new NativeRemote();
+        return native_remote_cache;
     }
 
     /**
