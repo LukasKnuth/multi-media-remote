@@ -1,3 +1,8 @@
 Manifest-Version: 1.0
+Class-Path: libs/jetty-security-8.0.4.v20111024.jar libs/jetty-util-8.
+ 0.4.v20111024.jar libs/servlet-api-3.0.jar libs/jetty-continuation-8.
+ 0.4.v20111024.jar libs/jetty-http-8.0.4.v20111024.jar libs/jetty-serv
+ let-8.0.4.v20111024.jar libs/jetty-server-8.0.4.v20111024.jar libs/je
+ tty-io-8.0.4.v20111024.jar libs/log4j-1.2.16.jar
 Main-Class: org.knuth.multimediaremote.server.Main
 

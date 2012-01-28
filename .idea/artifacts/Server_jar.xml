@@ -1,0 +1,24 @@
+<component name="ArtifactManager">
+  <artifact name="Server:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Server</output-path>
+    <root id="root">
+      <element id="archive" name="Server.jar">
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$PROJECT_DIR$/Server/src/META-INF/MANIFEST.MF" />
+        </element>
+        <element id="module-output" name="Server" />
+      </element>
+      <element id="directory" name="libs">
+        <element id="file-copy" path="$PROJECT_DIR$/Server/libs/jetty-http-8.0.4.v20111024.jar" />
+        <element id="file-copy" path="$PROJECT_DIR$/Server/libs/jetty-servlet-8.0.4.v20111024.jar" />
+        <element id="file-copy" path="$PROJECT_DIR$/Server/libs/jetty-util-8.0.4.v20111024.jar" />
+        <element id="file-copy" path="$PROJECT_DIR$/Server/libs/servlet-api-3.0.jar" />
+        <element id="file-copy" path="$PROJECT_DIR$/Server/libs/jetty-security-8.0.4.v20111024.jar" />
+        <element id="file-copy" path="$PROJECT_DIR$/Server/libs/jetty-server-8.0.4.v20111024.jar" />
+        <element id="file-copy" path="$PROJECT_DIR$/Server/libs/jetty-continuation-8.0.4.v20111024.jar" />
+        <element id="file-copy" path="$PROJECT_DIR$/Server/libs/log4j-1.2.16.jar" />
+        <element id="file-copy" path="$PROJECT_DIR$/Server/libs/jetty-io-8.0.4.v20111024.jar" />
+      </element>
+    </root>
+  </artifact>
+</component>

@@ -24,6 +24,12 @@ public class Main {
     // TODO Add support for multiple languages
     // TODO Add more Logging-statements (for errors and events).
     // TODO Change exit-code if there was a problem (don't exit with 0).
+    /*
+    * When exporting the Server, move or delete the symbolic links and files (e.g.
+    *  "config" and "logging") from the "out/production"-folder so they aren't
+     *  included in the produced .jar-file!
+     */
+    // TODO Create Ant build-script to collect the releases in a different folder.
 
     /**
      * Not instantiable.
