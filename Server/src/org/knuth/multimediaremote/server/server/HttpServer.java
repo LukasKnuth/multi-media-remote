@@ -12,6 +12,8 @@ import org.eclipse.jetty.servlet.ServletHolder;
 import org.knuth.multimediaremote.server.model.settings.Config;
 import org.knuth.multimediaremote.server.server.http.HttpMainServlet;
 
+import java.io.File;
+
 /**
  * @author Lukas Knuth
  * @version 1.0
@@ -51,10 +53,11 @@ public final class HttpServer implements AbstractServer{
         servlet_handler.addServlet(new ServletHolder(new HttpMainServlet()), "/");
         // Resource Handler:
         ResourceHandler res_handler = new ResourceHandler();
-        res_handler.setDirectoriesListed(true);
-        String base = this.getClass().getResource("http/res").getPath();
-        res_handler.setResourceBase(base);
-        System.out.println(base);
+        res_handler.setDirectoriesListed(false);
+        // TODO Add check if directory is there and has correct files!
+        File res_base = new File(Config.getBaseDir(), "res/");
+        res_handler.setResourceBase(res_base.getAbsolutePath());
+        System.out.println(res_base.getAbsolutePath());
         // Put resource handler in a context and map it to the "/res"-directory:
         ContextHandler res_handler_context = new ContextHandler();
         res_handler_context.setHandler(res_handler);

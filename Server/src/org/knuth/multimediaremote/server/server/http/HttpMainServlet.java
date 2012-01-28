@@ -1,6 +1,7 @@
 package org.knuth.multimediaremote.server.server.http;
 
 import org.knuth.multimediaremote.server.controller.Controller;
+import org.knuth.multimediaremote.server.model.settings.Config;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -26,13 +27,19 @@ public class HttpMainServlet extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        resp.setContentType("text/html");
-        try (PrintWriter out = new PrintWriter(resp.getWriter())) {
-            out.write(getIndexContents());
+        String contents;
+        PrintWriter out = null;
+        try {
+            contents = getIndexContents();
+            out = new PrintWriter(resp.getWriter(), false);
+            resp.setContentType("text/html");
+            out.write(contents);
             out.flush();
         } catch (IOException e){
             // Problem reading from the file:
             resp.sendError(404);
+        } finally {
+            if (out != null) out.close();
         }
     }
 
@@ -46,7 +53,7 @@ public class HttpMainServlet extends HttpServlet{
         // Check if already cached:
         if (this.indexCache != null) return this.indexCache;
         // Read contents from "index.html"-resource file:
-        InputStream is = this.getClass().getResourceAsStream("res/index.html");
+        FileInputStream is = new FileInputStream(new File(Config.getBaseDir(), "/res/index.html"));
         if (is == null){
             // If the "index.html"-file could not be found:
             throw new FileNotFoundException("Couldn't find \"res/index.html\"-file");
