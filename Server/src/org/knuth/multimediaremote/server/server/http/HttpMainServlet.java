@@ -60,11 +60,15 @@ public class HttpMainServlet extends HttpServlet{
         }
         // Read the file and cache the contents:
         StringBuffer buffer = new StringBuffer();
-        try(BufferedReader in = new BufferedReader(new InputStreamReader(is))) {
+        BufferedReader in = null;
+        try {
+            in = new BufferedReader(new InputStreamReader(is));
             // Copy contents:
             String line;
             while ( (line = in.readLine()) != null)
                 buffer.append(line);
+        } finally {
+            if (in != null) in.close();
         }
         // Write to cache:
         this.indexCache = buffer.toString();
@@ -80,13 +84,18 @@ public class HttpMainServlet extends HttpServlet{
             throws ServletException, IOException{
         System.out.println("POST for action: "+req.getParameter("action"));
         resp.setContentType("application/json");
-        try (PrintWriter out = new PrintWriter(resp.getWriter())){
+        // Write:
+        BufferedWriter out = null;
+        try {
+            out = new BufferedWriter(resp.getWriter());
             if (parseAndExecute( req.getParameter("action") )){
                 out.write("{\"status\": \"success\"}");
             } else {
                 out.write("{\"status\": \"invalid command\"}");
             }
             out.flush();
+        } finally {
+            if (out != null) out.close();
         }
     }
 

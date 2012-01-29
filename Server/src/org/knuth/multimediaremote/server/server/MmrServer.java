@@ -120,8 +120,13 @@ public final class MmrServer implements AbstractServer {
                             out.write(SUCCESS);
                             out.newLine();
                             out.flush();
-                        } catch (IllegalArgumentException | NullPointerException e){
+                        } catch (IllegalArgumentException e){
                             // Invalid action:
+                            out.write(FAILURE);
+                            out.newLine();
+                            out.flush();
+                        } catch (NullPointerException e){
+                            // Nothing was sent (maybe connection problems):
                             out.write(FAILURE);
                             out.newLine();
                             out.flush();

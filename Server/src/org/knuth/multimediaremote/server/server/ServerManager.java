@@ -43,12 +43,12 @@ public enum ServerManager {
      * Singleton - Not instantiable.
      */
     private ServerManager(){
-        servers = new HashMap<>(DEFAULT_INITIAL_CAPABILITY);
+        servers = new HashMap<Class, AbstractServer>(DEFAULT_INITIAL_CAPABILITY);
         servers_locked = false;
         // Get the IP-Address:
         server_address = getLocalIP();
         // Initialize the list for the observer-part:
-        listeners = new ArrayList<>(5);
+        listeners = new ArrayList<ServerStateChangeListener>(5);
         // Add servers:
         addDefaultServers();
     }
@@ -112,7 +112,7 @@ public enum ServerManager {
     private void notifyAllListeners(){
         if (listeners.size() <= 0) return;
         // Collect all information:
-        final Map<Class, ServerState> states = new HashMap<>(DEFAULT_INITIAL_CAPABILITY);
+        final Map<Class, ServerState> states = new HashMap<Class, ServerState>(DEFAULT_INITIAL_CAPABILITY);
         for (Map.Entry<Class,AbstractServer> entry : servers.entrySet()){
             states.put(entry.getKey(), entry.getValue().getServerState());
         }

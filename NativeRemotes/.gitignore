@@ -1,2 +1,5 @@
-# Ignore all compiled library's
-*.so
+# Ignore all Linux binarys
+Linux/bin/
+
+# Ignore all Windows bianrys
+Windows/bin/
