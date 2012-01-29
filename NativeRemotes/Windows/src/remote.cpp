@@ -62,15 +62,12 @@ void simulatePress(int operation_id){
 		break;
 	}
 	// Send key-press:
-	int result = SendInput(2, operation, sizeof(INPUT));
-	if (result > 0) printf("Success!");
-	else printf("Failed!");
+	SendInput(2, operation, sizeof(INPUT));
 }
 
 // Pause/Play method:
 JNIEXPORT void JNICALL Java_org_knuth_multimediaremote_server_model_remotes_NativeRemote_nPausePlay
   (JNIEnv *, jobject){
-	printf("Pause...");
     simulatePress(PAUSE_PLAY);
 }
 
