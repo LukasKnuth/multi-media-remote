@@ -14,13 +14,11 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 /**
+ * @author Lukas Knuth
+ * @version 1.0
  * Manages the Elements on the UI and their interaction.
- * <br>
- * This class is an Enumerated Singleton!
  */
-public enum GUIManager {
-    /** Singleton Instance */
-    INSTANCE;
+public class GUIManager {
 
     /** The JFrame which is shown by the Application */
     private final JFrame f;
@@ -44,7 +42,7 @@ public enum GUIManager {
         JLabel instructions = new Instructions().getLabel();
         instructions.setAlignmentX(Component.CENTER_ALIGNMENT);
         overall.add(instructions);
-        // OSSWITCHER
+        // OS-SWITCHER
         overall.add(new OSSwitch().getView());
         overall.add(new JSeparator(JSeparator.HORIZONTAL));
         // SETTINGS
@@ -56,11 +54,11 @@ public enum GUIManager {
     }
 
     /**
-     * Private constructor.
-     * <br>
-     * Also creates the Frame and set's the basic configuration.
+     * Does the basic set-up for the {@code JFrame} and also
+     *  calls the {@code setUp}-method to do further work.
+     * @see org.knuth.multimediaremote.server.view.GUIManager#setUp()
       */
-    private GUIManager(){
+    public GUIManager(){
         f = new JFrame("MultiMediaRemote Server Application");
         f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         f.addWindowListener(new WindowAdapter() {
@@ -76,9 +74,9 @@ public enum GUIManager {
             }
         });
         f.setResizable(false);
-        f.setSize(400, 600);
-        // Set up the All the Controll-Elements:
+        // Set up the All the Control-Elements:
         setUp();
+        f.pack();
     }
 
     /**

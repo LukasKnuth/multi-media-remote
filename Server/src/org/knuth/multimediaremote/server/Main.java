@@ -15,8 +15,9 @@ import java.io.IOException;
 import java.util.Properties;
 
 /**
- * Server-Application Intro.
  * @author Lukas Knuth
+ * @version 1.0
+ * Server-Application Intro.
  */
 public class Main {
 
@@ -64,11 +65,19 @@ public class Main {
                 // Read and initialize the config:
                 Config.INSTANCE.initialize();
                 // Present GUI:
-                GUIManager.INSTANCE.present();
+                GUIManager guiManager = new GUIManager();
+                guiManager.present();
             }
         });
     }
 
+    /**
+     * Loads the config-file for the Log4J library and sets the output-
+     *  directory to the path containing the ".jar"-file.
+     * This has to be done "in-code" since there are no relative paths
+     *  finding out the correct path is tricky.
+     * @see org.knuth.multimediaremote.server.model.settings.Config#getBaseDir()
+     */
     private static void configureLogger(){
         try {
             Properties properties = new Properties();
