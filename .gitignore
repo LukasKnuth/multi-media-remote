@@ -8,3 +8,6 @@ Server/natives/
 logging.log
 # Ignore my config
 config.properties
+
+# Ignore the workspace-file (can be rebuild)
+.idea/workspace.xml
