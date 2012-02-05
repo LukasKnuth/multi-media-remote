@@ -1,5 +1,6 @@
 package org.knuth.multimediaremote.server.server;
 
+import org.apache.log4j.Logger;
 import org.eclipse.jetty.server.Connector;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.ContextHandler;
@@ -36,6 +37,18 @@ public final class HttpServer implements AbstractServer{
 
     /** The connector the Jetty-server instance uses */
     private SelectChannelConnector connector;
+
+    /**
+     * The logger to use if any problems occur. It will show the given
+     *  message on the GUI and log the exception to the log-file.
+     */
+    private static final Logger logger;
+    /**
+     * Initialize the logger for this class.
+     */
+    static {
+        logger = Logger.getLogger("guiLogger");
+    }
 
     @Override
     public void init() {
@@ -86,6 +99,7 @@ public final class HttpServer implements AbstractServer{
             connector.setPort(port);
             server.start();
         } catch (Exception e) {
+            logger.error("There was a problem starting the HTTP-Server", e);
             e.printStackTrace();
         }
     }
@@ -95,6 +109,7 @@ public final class HttpServer implements AbstractServer{
         try {
             server.stop();
         } catch (Exception e) {
+            logger.error("There was a problem stopping the HTTP-Server", e);
             e.printStackTrace();
         }
     }

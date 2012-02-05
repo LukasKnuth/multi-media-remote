@@ -92,12 +92,10 @@ public enum ServerManager {
             // help.
             return Inet4Address.getLocalHost().getHostAddress();
         } catch (SocketException e) {
-            Logger logger = Logger.getRootLogger();
-            logger.error("Can't get local IP", e);
+            Logger.getRootLogger().error("Can't get local IP", e);
             new ErrorDialog(e).show();
         } catch (UnknownHostException e) {
-            Logger logger = Logger.getRootLogger();
-            logger.error("Can't get local IP", e);
+            Logger.getRootLogger().error("Can't get local IP", e);
             new ErrorDialog(e).show();
         }
         // This should not happen. If it does, inform the user:

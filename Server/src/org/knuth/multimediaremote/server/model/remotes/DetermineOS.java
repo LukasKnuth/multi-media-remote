@@ -31,6 +31,18 @@ public final class DetermineOS {
     private static NativeRemote native_remote_cache;
 
     /**
+     * The logger to use if any problems occur. It will show the given
+     *  message on the GUI and log the exception to the log-file.
+     */
+    private static final Logger logger;
+    /**
+     * Initialize the logger for this class.
+     */
+    static {
+        logger = Logger.getLogger("guiLogger");
+    }
+
+    /**
      * Runs a test to determine which OS is currently running.
      *  <br>
      *  The result's are cached, so it's okay to run this method
@@ -42,7 +54,6 @@ public final class DetermineOS {
         if (current_os != null) return current_os;
         // Else, find out:
         final OperatingSystem temp;
-        Logger logger = Logger.getLogger("guiLogger");
         final String os_str = System.getProperty("os.name").toLowerCase();
         // Check the OS-String.
         if (os_str.startsWith("linux")) temp = OperatingSystem.LINUX;
@@ -80,9 +91,7 @@ public final class DetermineOS {
     public static Remote getNativeRemote() {
         // Check if already initialized and cached:
         if (native_remote_cache != null) return native_remote_cache;
-        // Otherwise check which System...
-        Logger logger = Logger.getLogger("guiLogger");
-        // Check which OS and load it's library:
+        // Otherwise check which OS and load it's library:
         final File lib_file;
         switch (determineCurrentOS()){
             case LINUX:

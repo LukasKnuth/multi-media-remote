@@ -1,5 +1,6 @@
 package org.knuth.multimediaremote.server.server;
 
+import org.apache.log4j.Logger;
 import org.knuth.multimediaremote.server.controller.Controller;
 import org.knuth.multimediaremote.server.model.settings.Config;
 
@@ -46,6 +47,18 @@ public final class MmrServer implements AbstractServer {
     /** The task which runs the Server in a background-thread */
     private ExecutorService server_task;
 
+    /**
+     * The logger to use if any problems occur. It will show the given
+     *  message on the GUI and log the exception to the log-file.
+     */
+    private static final Logger logger;
+    /**
+     * Initialize the logger for this class.
+     */
+    static {
+        logger = Logger.getLogger("guiLogger");
+    }
+
     @Override
     public void init() {
         loadPort();
@@ -79,6 +92,7 @@ public final class MmrServer implements AbstractServer {
             if (serverSocket != null)
                 serverSocket.close();
         } catch (IOException e) {
+            logger.error("Couldn't successfully stop the Server", e);
             e.printStackTrace();
         }
     }
@@ -134,6 +148,7 @@ public final class MmrServer implements AbstractServer {
                     } catch (SocketException e){
                         // Can be ignored as it will accrue when the Server is stopped.
                         // @see http://stackoverflow.com/questions/2983835
+                        logger.error("There was a problem stopping the MMR-Server", e);
                     } finally {
                         // Always close the Streams
                         if (in != null) in.close();
@@ -142,12 +157,14 @@ public final class MmrServer implements AbstractServer {
                     }
                 }
             } catch (IOException e) {
+                logger.error("An I/O exception has occurred in the MMR-Server", e);
                 e.printStackTrace();
             } finally {
                 // Close the Server-Socket.
                 if (serverSocket != null) try {
                     serverSocket.close();
                 } catch (IOException e) {
+                    logger.error("The MMR-Socket couldn't be closed", e);
                     e.printStackTrace();
                 }
             }

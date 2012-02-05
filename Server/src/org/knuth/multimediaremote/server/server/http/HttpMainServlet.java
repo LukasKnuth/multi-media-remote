@@ -1,5 +1,6 @@
 package org.knuth.multimediaremote.server.server.http;
 
+import org.apache.log4j.Logger;
 import org.knuth.multimediaremote.server.controller.Controller;
 import org.knuth.multimediaremote.server.model.settings.Config;
 
@@ -37,6 +38,7 @@ public class HttpMainServlet extends HttpServlet{
             out.flush();
         } catch (IOException e){
             // Problem reading from the file:
+            Logger.getLogger("guiLogger").error("There was a problem reading from the index file", e);
             resp.sendError(404);
         } finally {
             if (out != null) out.close();

@@ -23,7 +23,6 @@ public class Main {
 
     // TODO Use "chkUpdate" for update check on public github repo
     // TODO Add support for multiple languages
-    // TODO Add more Logging-statements (for errors and events).
     // TODO Change exit-code if there was a problem (don't exit with 0).
     /*
     * When exporting the Server, move or delete the symbolic links and files (e.g.

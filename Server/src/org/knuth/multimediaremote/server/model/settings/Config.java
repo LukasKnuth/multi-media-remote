@@ -30,6 +30,18 @@ public enum Config {
     private static File basedir;
 
     /**
+     * The logger to use if any problems occur. It will show the given
+     *  message on the GUI and log the exception to the log-file.
+     */
+    private static final Logger logger;
+    /**
+     * Initialize the logger for this class.
+     */
+    static {
+        logger = Logger.getLogger("guiLogger");
+    }
+
+    /**
      * Private constructor to enforce singleton-pattern.
      */
     private Config(){
@@ -102,7 +114,9 @@ public enum Config {
             String decodedPath = URLDecoder.decode(path, "UTF-8");
             basedir = new File(decodedPath);
             return basedir;
-        } catch (UnsupportedEncodingException e) { /* Can't happen */}
+        } catch (UnsupportedEncodingException e) {
+            logger.error("There was an Encoding-Problem", e);
+        }
         // Otherwise use the Home-directory.
         basedir = new File(".");
         return basedir;
@@ -119,7 +133,6 @@ public enum Config {
             outputStream = new FileOutputStream(config_file);
             props.store(outputStream, "MultiMediaRemote config-file. NOT TO BE CHANGED MANUALLY!");
         } catch (IOException e) {
-            Logger logger = Logger.getRootLogger();
             logger.error("Can't write the custom config-file", e);
         } finally {
             if (outputStream != null){
@@ -149,18 +162,16 @@ public enum Config {
         try {
             inputStream = new FileInputStream(config_file);
             props.load(inputStream);
-            Logger.getLogger("guiLogger").info("User-config successfully loaded");
+            logger.info("Configuration successfully loaded");
         } catch (IOException e) {
             // Log the failure:
-            Logger logger = Logger.getRootLogger();
             logger.error("Can't load the custom config-file", e);
         } finally {
             if (inputStream != null){
                 try {
                     inputStream.close();
                 } catch (IOException e) {
-                    Logger logger = Logger.getRootLogger();
-                    logger.error("Couldn't close the custom-config files InputStream", e);
+                    logger.error("There was a problem reading the config-file.", e);
                 }
             }
         }
@@ -187,8 +198,7 @@ public enum Config {
             return def;
         } catch (IOException e) {
             // Log the error:
-            Logger logger = Logger.getRootLogger();
-            logger.error("Can't load default config!", e);
+            logger.error("Can't load the default config!", e);
             // Return empty default config:
             return def;
         } finally {
@@ -197,8 +207,7 @@ public enum Config {
                     inputStream.close();
                 } catch (IOException e) {
                     // Log the error.
-                    Logger logger = Logger.getRootLogger();
-                    logger.error("Couldn't close the default-config files InputStream", e);
+                    logger.error("There was a problem loading the default-config file", e);
                 }
             }
         }

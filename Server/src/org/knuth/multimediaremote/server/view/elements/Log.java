@@ -2,6 +2,7 @@ package org.knuth.multimediaremote.server.view.elements;
 
 import org.apache.log4j.AppenderSkeleton;
 import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.apache.log4j.spi.LoggingEvent;
 
 import javax.swing.*;
@@ -72,6 +73,7 @@ public class Log extends AppenderSkeleton{
                 rectangle.height += 10;
                 log.scrollRectToVisible(rectangle);
             } catch (BadLocationException e) {
+                Logger.getRootLogger().error("Problem appending a new Log message to the GUI", e);
                 e.printStackTrace();
             }
         } else if (loggingEvent.getLevel() == Level.ERROR){
@@ -79,6 +81,7 @@ public class Log extends AppenderSkeleton{
             try {
                 doc.insertString(doc.getLength(), message, error_log);
             } catch (BadLocationException e) {
+                Logger.getRootLogger().error("Problem appending a new Log message to the GUI", e);
                 e.printStackTrace();
             }
         }
