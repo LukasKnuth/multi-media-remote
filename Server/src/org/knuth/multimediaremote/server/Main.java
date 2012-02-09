@@ -30,6 +30,7 @@ public class Main {
      *  included in the produced .jar-file!
      */
     // TODO Create Ant build-script to collect the releases in a different folder.
+    // TODO Make own File-Appender for log which creates a log per run.
 
     /**
      * Not instantiable.
