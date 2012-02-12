@@ -121,6 +121,19 @@ public enum ServerManager {
             listener.serverStateChanged(container);
         }
     }
+
+    /**
+     * Checks if at least one registered server-instance is still running.
+     * @return {@code true} if there is at least one instance still running,
+     *  {@code false} otherwise.
+     */
+    public boolean isServerRunning(){
+        for (AbstractServer server : servers.values()){
+            if (server.getServerState().getCurrentState() == ServerState.States.RUNNING)
+                return true;
+        }
+        return false;
+    }
         
     /**
      * Remove the given listener from the list of this observer.</p>
