@@ -10,8 +10,11 @@ import org.knuth.multimediaremote.server.view.elements.Log;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.net.URL;
 
 /**
  * @author Lukas Knuth
@@ -23,8 +26,11 @@ public class GUIManager {
     /** The JFrame which is shown by the Application */
     private final JFrame f;
 
+    /** The tray-icon to minimize the application to */
+    private TrayIcon tray;
+
     /**
-     * Set's up the View.
+     * Set's up the components for the GUI.
      */
     private void setUp(){
         // Basic Layout Container:
@@ -54,29 +60,62 @@ public class GUIManager {
     }
 
     /**
-     * Does the basic set-up for the {@code JFrame} and also
-     *  calls the {@code setUp}-method to do further work.
-     * @see org.knuth.multimediaremote.server.view.GUIManager#setUp()
+     * Does the basic set-up for the {@code JFrame} and gets
+     *  everything ready to show.</p>
+     * To show the Frame, call the {@code present()}-method.
+     * @see org.knuth.multimediaremote.server.view.GUIManager#present()
       */
     public GUIManager(){
         f = new JFrame("MultiMediaRemote Server Application");
-        f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         f.addWindowListener(new WindowAdapter() {
-            public void windowClosed(WindowEvent w) {
-                // Save the config:
-                Config.INSTANCE.close();
-                // Shutdown all Servers:
-                ServerManager.INSTANCE.stopServers();
-                // Shutdown the Controller:
-                Controller.INSTANCE.shutdown();
-                // Exit:
-                System.exit(0);
+            public void windowClosing(WindowEvent w) {
+                // Minimize or close?
+                if (tray != null && ServerManager.INSTANCE.isServerRunning()){
+                    // Tray is supported, use it!
+                    minimizeToTray();
+                } else if (tray == null && ServerManager.INSTANCE.isServerRunning()){
+                    // Tray is not supported, ask to close the program:
+                    int close = JOptionPane.showConfirmDialog(f,
+                            "Some Server-instances are still running!\nDo you want me to " +
+                                    "shut them down and exit the program?",
+                            "Servers are still running", JOptionPane.OK_CANCEL_OPTION);
+                    if (close == JOptionPane.OK_OPTION){
+                        disposeAndShutdown();
+                    } else return; // Cancel shutdown.
+                } else {
+                    // Nothing is running, so close.
+                    disposeAndShutdown();
+                }
             }
         });
         f.setResizable(false);
         // Set up the All the Control-Elements:
         setUp();
         f.pack();
+        // Set up the System-tray:
+        setUpSystemTray();
+    }
+
+    /**
+     * Calling this method will cause the Window to be disposed
+     *  and the application to be shutdown.</p>
+     * Shutting down the application includes saving the configs,
+     *  shutting down all running servers and the controller.</p>
+     * Calling this method to shut down the application will cause
+     *  it to exit with an exit-code of {@code 0}.
+     */
+    private void disposeAndShutdown(){
+        // Save the config:
+        Config.INSTANCE.close();
+        // Shutdown all Servers:
+        ServerManager.INSTANCE.stopServers();
+        // Shutdown the Controller:
+        Controller.INSTANCE.shutdown();
+        // Dispose the Window:
+        f.dispose();
+        // Exit:
+        System.exit(0);
     }
 
     /**
@@ -84,8 +123,56 @@ public class GUIManager {
      */
     public void present(){
         f.setVisible(true);
-        Logger logger = Logger.getLogger("guiLogger");
-        logger.info("Successfully build the GUI");
+        Logger.getLogger("guiLogger").info("Successfully build the GUI");
+    }
+
+    /**
+     * Minimize the application to the tray and show a message informing
+     *  the user that the application is minimized.</p>
+     * If there was a problem minimizing to the tray, this method will ensure
+     *  that the window is displayed and log the problem.
+     */
+    private void minimizeToTray(){
+        try {
+            SystemTray.getSystemTray().add(tray);
+            f.setVisible(false);
+            tray.displayMessage(
+                    "Down here!", "We could show the IP's here...", TrayIcon.MessageType.INFO
+            );
+        } catch (Exception e) {
+            Logger.getLogger("guiLogger").error("Could not minimize the Server to the tray.", e);
+            // Better save then sorry:
+            f.setVisible(true);
+        }
+    }
+
+    /**
+     * Checks whether the system-tray is usable and sets everything up.</p>
+     * This method should only be called once.
+     */
+    private void setUpSystemTray(){
+        // Check if supported:
+        if (!SystemTray.isSupported()){
+            Logger.getLogger("guiLogger").error("Your System does not support Tray icons.");
+            return;
+        }
+        // Get an Icon:
+        // TODO Linux problem with transparent icons... fix?
+        URL tray_icon_url = GUIManager.class.getResource("res/tray_icon.gif");
+        ImageIcon tray_icon = new ImageIcon(tray_icon_url);
+        // Set everything up:
+        tray = new TrayIcon(tray_icon.getImage(), "MMR Tray");
+        tray.setImageAutoSize(true);
+        // Action Listener:
+        tray.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                // Remove the tray-icon:
+                SystemTray.getSystemTray().remove(tray);
+                // Show the window again:
+                f.setVisible(true);
+            }
+        });
     }
     
 }
