@@ -148,7 +148,6 @@ public final class MmrServer implements AbstractServer {
                     } catch (SocketException e){
                         // Can be ignored as it will accrue when the Server is stopped.
                         // @see http://stackoverflow.com/questions/2983835
-                        logger.error("There was a problem stopping the MMR-Server", e);
                     } finally {
                         // Always close the Streams
                         if (in != null) in.close();
