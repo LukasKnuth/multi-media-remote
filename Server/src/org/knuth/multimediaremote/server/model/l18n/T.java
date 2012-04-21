@@ -22,7 +22,7 @@ public class T {
 
         /**
          * Translated strings for the {@code Instructions}-class.
-         * @see Instructions
+         * @see org.knuth.multimediaremote.server.view.elements.Instructions
          */
         public static class Instructions{
 
@@ -36,7 +36,7 @@ public class T {
 
         /**
          * Translated strings for the {@code Configurator}-class.
-         * @see Configurator
+         * @see org.knuth.multimediaremote.server.model.settings.Configurator
          */
         public static class Configurator{
             
@@ -50,6 +50,17 @@ public class T {
             public static final String port = "view.configurator.port_textfield";
 
         }
-        
+
+        /**
+         * Translated strings for the {@code ErrorDialog}-class.
+         * @see org.knuth.multimediaremote.server.view.elements.ErrorDialog
+         */
+        public static class ErrorDialog{
+            
+            /** The title for the dialog-window */
+            public static final String title = "view.error_dialog.title";
+            /** The instructions-string in the dialog */
+            public static final String instructions = "view.error_dialog.instructions";
+        }
     }
 }
