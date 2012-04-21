@@ -22,7 +22,6 @@ import java.util.Properties;
 public class Main {
 
     // TODO Use "chkUpdate" for update check on public github repo
-    // TODO Add support for multiple languages
     // TODO Change exit-code if there was a problem (don't exit with 0).
     /*
     * When exporting the Server, move or delete the symbolic links and files (e.g.
@@ -31,6 +30,7 @@ public class Main {
      */
     // TODO Create Ant build-script to collect the releases in a different folder.
     // TODO Make own File-Appender for log which creates a log per run.
+    // TODO Fix JavaDoc for classes by putting them above author and version!
 
     /**
      * Not instantiable.

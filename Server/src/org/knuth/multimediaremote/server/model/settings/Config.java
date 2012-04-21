@@ -44,9 +44,7 @@ public enum Config {
     /**
      * Private constructor to enforce singleton-pattern.
      */
-    private Config(){
-        // TODO Create "Translater"-class with HashMap for all public translations (read only with devensive-copys)
-    }
+    private Config(){}
 
     /**
      * Get a GUI-representation of all properties.
