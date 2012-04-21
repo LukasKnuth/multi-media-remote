@@ -39,7 +39,7 @@ public class GUIManager {
         f.add(overall);
         // Elements:
         // LOGO
-        ImageIcon logo = new ImageIcon(GUIManager.class.getResource("res/logo_platzhalter.png"));
+        ImageIcon logo = new ImageIcon(GUIManager.class.getResource("res/header.png"));
         JLabel logo_label = new JLabel(logo);
         logo_label.setAlignmentX(Component.CENTER_ALIGNMENT);
         overall.add(logo_label);
