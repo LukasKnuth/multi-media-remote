@@ -17,10 +17,39 @@ public class T {
      */
     private T(){}
 
-    /** Contains error-messages! */
-    public static class Errors{
+    /** Contains translated strings for View-elements */
+    public static class View{
 
-        /** An example Error */
-        public static final String EXAMPLE = "example";
+        /**
+         * Translated strings for the {@code Instructions}-class.
+         * @see Instructions
+         */
+        public static class Instructions{
+
+            /** The instructions printed on the gui */
+            public static final String instructions = "view.instructions.instructions_string";
+            /** Label for not running servers */
+            public static final String not_running = "view.instructions.not_running";
+            /** Label for servers which are not activated */
+            public static final String deactivated = "view.instructions.deactivated";
+        }
+
+        /**
+         * Translated strings for the {@code Configurator}-class.
+         * @see Configurator
+         */
+        public static class Configurator{
+            
+            /** The label for the "start"-button */
+            public static final String start = "view.configurator.start_button";
+            /** The label for the "stop"-button */
+            public static final String stop = "view.configurator.stop_button";
+            /** The label for the WebEnd switch */
+            public static final String webend = "view.configurator.webend_switch";
+            /** The label for the port-textfield */
+            public static final String port = "view.configurator.port_textfield";
+
+        }
+        
     }
 }

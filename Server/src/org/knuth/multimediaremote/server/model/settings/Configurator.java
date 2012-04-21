@@ -1,6 +1,8 @@
 package org.knuth.multimediaremote.server.model.settings;
 
 import org.apache.log4j.Logger;
+import org.knuth.multimediaremote.server.model.l18n.L18N;
+import org.knuth.multimediaremote.server.model.l18n.T;
 import org.knuth.multimediaremote.server.server.*;
 import org.knuth.multimediaremote.server.server.observer.ServerStateChangeListener;
 
@@ -56,7 +58,7 @@ class Configurator implements ActionListener, PropertyChangeListener, ServerStat
         overall.setLayout(new BoxLayout(overall, BoxLayout.PAGE_AXIS));
         // Port-config:
         JPanel port = new JPanel();
-        port.add(new JLabel("Port for the Server:"));
+        port.add(new JLabel( L18N.tS(T.View.Configurator.port) ));
         NumberFormat format = NumberFormat.getIntegerInstance();
         format.setGroupingUsed(false);
         port_field = new JFormattedTextField(format);
@@ -67,14 +69,14 @@ class Configurator implements ActionListener, PropertyChangeListener, ServerStat
         port.setAlignmentX(Component.CENTER_ALIGNMENT);
         overall.add(port);
         // Webend config:
-        webend = new JCheckBox("Should I launch a Webend for the Server?");
+        webend = new JCheckBox( L18N.tS(T.View.Configurator.webend) );
         webend.addActionListener(this);
         boolean checked = Boolean.valueOf( Config.INSTANCE.getProperty("webend") ); // Load from prefs.
         webend.setSelected(checked);
         webend.setAlignmentX(Component.CENTER_ALIGNMENT);
         overall.add(webend);
         // Server starter
-        starter = new JButton("Start Server");
+        starter = new JButton( L18N.tS(T.View.Configurator.start) );
         starter.setActionCommand("start");
         starter.addActionListener(this);
         starter.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -112,14 +114,14 @@ class Configurator implements ActionListener, PropertyChangeListener, ServerStat
             switch (state.getCurrentState()){
                 case RUNNING:
                     starter.setActionCommand("stop");
-                    starter.setText("Stop Server");
+                    starter.setText( L18N.tS(T.View.Configurator.stop) );
                     logger.info("Server successfully started.");
                     // Deactivate the Webend Checkbox
                     webend.setEnabled(false);
                     break;
                 case STOPPED:
                     starter.setActionCommand("start");
-                    starter.setText("Start Server");
+                    starter.setText( L18N.tS(T.View.Configurator.start) );
                     logger.info("Server stopped.");
                     // Activate the Webend Checkbox
                     webend.setEnabled(true);

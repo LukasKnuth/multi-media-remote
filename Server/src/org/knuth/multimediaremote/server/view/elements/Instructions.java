@@ -1,5 +1,7 @@
 package org.knuth.multimediaremote.server.view.elements;
 
+import org.knuth.multimediaremote.server.model.l18n.L18N;
+import org.knuth.multimediaremote.server.model.l18n.T;
 import org.knuth.multimediaremote.server.server.*;
 import org.knuth.multimediaremote.server.server.observer.ServerStateChangeListener;
 
@@ -13,17 +15,6 @@ import javax.swing.*;
  */
 public class Instructions implements ServerStateChangeListener{
 
-    /** The standard instruction-string */
-    private static final String instructions_str = "<html>" +
-            "<p><b>Connection-Data <i>for clients</i></b>" +
-            "<ul><li>Server-IP: %1$s</li>" +
-            "<li>Port: %2$s</li>" +
-            "</ul>" +
-            "<b>Connection-Data <i>for browsers</i></b>" +
-            "<ul><li>Address: %3$s</li>" +
-            "</ul>"+
-            "<p>Have fun!</p></html>";
-
     /** The label holding the information */
     private JLabel instructions;
 
@@ -34,8 +25,11 @@ public class Instructions implements ServerStateChangeListener{
      *  Server-state.
      */
     public Instructions(){
-        instructions = new JLabel(String.format(instructions_str,
-                "<i>not running</i>", "<i>not running</i>", "<i>not running</i>"));
+        instructions = new JLabel(String.format(L18N.tS(T.View.Instructions.instructions),
+                L18N.tS(T.View.Instructions.not_running),
+                L18N.tS(T.View.Instructions.not_running),
+                L18N.tS(T.View.Instructions.not_running)
+        ));
         ServerManager.INSTANCE.addServerStateChangeListener(this);
     }
 
@@ -52,12 +46,12 @@ public class Instructions implements ServerStateChangeListener{
                     mmr_port = state.getPort()+"";
                     break;
                 case STOPPED:
-                    mmr_port = "<i>not running</i>";
-                    ip = "<i>not running</i>";
+                    mmr_port = L18N.tS(T.View.Instructions.not_running);
+                    ip = L18N.tS(T.View.Instructions.not_running);
             }
         } else {
-            mmr_port = "<b>deactivated</b>";
-            ip = "<b>deactivated</b>";
+            mmr_port = L18N.tS(T.View.Instructions.deactivated);
+            ip = L18N.tS(T.View.Instructions.deactivated);
         }
         // HTTP:
         if (container.containsStateFor(HttpServer.class)){
@@ -67,13 +61,13 @@ public class Instructions implements ServerStateChangeListener{
                     http = "http://"+ip+":"+state.getPort()+"";
                     break;
                 case STOPPED:
-                    http = "<i>not running</i>";
+                    http = L18N.tS(T.View.Instructions.not_running);
             }
         } else {
-            http = "<b>deactivated</b>";
+            http = L18N.tS(T.View.Instructions.deactivated);
         }
         // Format the String:
-        instructions.setText(String.format(instructions_str,
+        instructions.setText(String.format(L18N.tS(T.View.Instructions.instructions),
                 ip, mmr_port, http)
         );
     }
