@@ -38,7 +38,8 @@ public class L18N {
     static {
         messages = ResourceBundle.getBundle(
                 L18N.class.getPackage().getName()+ // The current package's name
-                ".translation");
+                ".translation",
+                new UTF8Control()); // Use UTF-8 to load the translations.
     }
 
     /**
